@@ -31,7 +31,9 @@ fi
 ### Moving docs to root directory and committing ###
 DOCS_ROOT="."
 
-cp -r build/docs/html "${DOCS_ROOT}"
+cp -r build/docs/html/* "${DOCS_ROOT}"
+
+rm -fr build
 
 git add "${DOCS_ROOT}"
 git commit -m "Built new docs on master"
