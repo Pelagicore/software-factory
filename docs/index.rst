@@ -9,4 +9,5 @@ Revision: |release|
     :glob:
 
     chapters/intro/*
+    chapters/workflow/*
 
