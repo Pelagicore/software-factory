@@ -5,9 +5,10 @@ Revision: |release|
 
 .. toctree::
     :caption: Table of contents:
-    :maxdepth: 2
+    :maxdepth: 3
     :glob:
 
     chapters/intro/*
     chapters/workflow/*
+    chapters/baseplatform/index.rst
 
