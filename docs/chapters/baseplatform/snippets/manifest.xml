@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+    <!-- Define remotes -->
+    <remote fetch="git://git.yoctoproject.org" name="yocto"/>
+    <remote fetch="ssh://git@github.com/Pelagicore/" name="github"/>
+
+    <!-- Specify layers -->
+    <project remote="yocto"
+             revision="master"
+             name="poky"
+             path="sources/poky"/>
+
+    <project remote="github"
+             revision="9ac8ad53a22649f84938b4625592f3ef9a4d30f4"
+             name="meta-bistro.git"
+             path="sources/meta-bistro"/>
+</manifest>
