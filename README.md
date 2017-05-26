@@ -29,6 +29,8 @@ Configure and build from the git top dir like so:
     cd build
     make
 
+After a successfull build you can find the documentation in `build/docs/html/`
+if you open the `index.html` in your browser you will see the entry point.
 
 # License and Copyright
 Copyright (C) Pelagicore AB 2017
