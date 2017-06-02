@@ -37,4 +37,6 @@ Finally, build the desired image. See the variables description above for inform
 
     bitbake <image>
 
+When the build is complete the result will be available in ``tmp/deploy/images/<machine>/``. It is possible to generate a number of different image formats, ranging from just the rootfs as a tarball to ready disk-images containing EFI-bootloader, configuration and rootfs and that can be written directly to a storage device. For PELUX, the preffered format for the Intel NUC are .wic images, which are complete disk-images.
+
 .. _QtAS: https://www.qt.io/qt-automotive-suite/
