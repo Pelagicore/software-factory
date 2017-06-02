@@ -17,7 +17,9 @@ Create a directory for the PELUX build. Instruct repo tool to fetch a manifest u
 .. literalinclude:: snippets/repo-init.sh
     :language: bash
 
-When done fetching the sources, create a build directory and set up bitbake. TEMPLATECONF tells the `oe-init-build-env` script which path to fetch configuration samples from. Note that the example below get the template configuration for the Intel BSP, adapt the path according to your current BSP.
+When done fetching the sources, create a build directory and set up bitbake. TEMPLATECONF tells the `oe-init-build-env` script which path to fetch configuration samples from.
+
+.. note:: The example below get the template configuration for the Intel BSP, adapt the path according to your current BSP.
 
 .. literalinclude:: snippets/repo-source.sh
     :language: bash
