@@ -21,7 +21,7 @@ Create a directory for the PELUX build. Instruct repo tool to fetch a manifest u
     repo init -u https://github.com/Pelagicore/pelux-manifests.git -m <manifest> -b <branch>
     repo sync
 
-When done fetching the sources, create a build directory and set up bitbake. TEMPLATECONF tells the `oe-init-build-env` script which path to fetch configuration samples from.
+When done fetching the sources, create a build directory and set up bitbake. ``TEMPLATECONF`` tells the ``oe-init-build-env`` script which path to fetch configuration samples from.
 
 .. note:: The example below get the template configuration for the Intel BSP, adapt the path according to your current BSP.
 
@@ -29,7 +29,7 @@ When done fetching the sources, create a build directory and set up bitbake. TEM
 
     TEMPLATECONF=`pwd`/sources/meta-pelux-bsp-intel/conf/ source sources/poky/oe-init-build-env build
 
-The script will create configs if there are no configs present, a message about created `conf/local.conf` and `conf/bblayers.conf` files is normal.
+The script will create configs if there are no configs present, a message about created ``conf/local.conf`` and ``conf/bblayers.conf`` files is normal.
 
 Finally, build the desired image. See the variables description above for information on the different images.
 
