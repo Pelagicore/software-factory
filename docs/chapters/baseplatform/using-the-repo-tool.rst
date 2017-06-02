@@ -13,7 +13,7 @@ If you already have a directory in your ``$PATH`` for placing user-specific runn
 .. literalinclude:: snippets/export.sh
     :language: bash
 
-Note that you need to replace ``~/.bashrc`` with the correct rc-file for your shell.
+.. note:: You need to replace ``~/.bashrc`` with the correct rc-file for your shell.
 
 Then download the repo tool binary to ``~/bin``:
 
