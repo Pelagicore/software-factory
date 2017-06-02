@@ -14,22 +14,27 @@ Variables:
 
 Create a directory for the PELUX build. Instruct repo tool to fetch a manifest using the command `repo init`. In this context, branch denotes what branch of git repo `pelux-manifests` to use. Then make repo tool fetch all sources using the command `repo sync`.
 
-.. literalinclude:: snippets/repo-init.sh
-    :language: bash
+.. code-block:: bash
+
+    mkdir pelux
+    cd pelux
+    repo init -u https://github.com/Pelagicore/pelux-manifests.git -m <manifest> -b <branch>
+    repo sync
 
 When done fetching the sources, create a build directory and set up bitbake. TEMPLATECONF tells the `oe-init-build-env` script which path to fetch configuration samples from.
 
 .. note:: The example below get the template configuration for the Intel BSP, adapt the path according to your current BSP.
 
-.. literalinclude:: snippets/repo-source.sh
-    :language: bash
+.. code-block:: bash
+
+    TEMPLATECONF=`pwd`/sources/meta-pelux-bsp-intel/conf/ source sources/poky/oe-init-build-env build
 
 The script will create configs if there are no configs present, a message about created `conf/local.conf` and `conf/bblayers.conf` files is normal.
 
-
 Finally, build the desired image. See the variables description above for information on the different images.
 
-.. literalinclude:: snippets/bitbake.sh
-    :language: bash
+.. code-block:: bash
+
+    bitbake <image>
 
 .. _QtAS: https://www.qt.io/qt-automotive-suite/
