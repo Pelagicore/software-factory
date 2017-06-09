@@ -91,28 +91,28 @@ Now mount the testmaster rootfs in order to do some changes there:
 .. code-block:: bash
 
     sudo mount /dev/sd<YOUR USB DEVICE>2 /mnt/
-      
+
     # Create image used to identify if system is booted into the testmaster image
     sudo touch /mnt/etc/masterimage
-      
+
     # Make sure the testmaster image shows a login prompt
     sudo ln -sf /lib/systemd/system/getty@.service /mnt/etc/systemd/system/getty.target.wants/getty@tty1.service
-      
+
     # Create a network conf file which we then copy to rootfs, this one uses DHCP
     cat <<EOF > /tmp/20-wired.network
     [Match]
     Name=en*
-     
+
     [Network]
     DHCP=ipv4
-     
+
     [DHCP]
     RouteMetric=10
     ClientIdentifier=mac
     EOF
     sudo cp /tmp/20-wired.network /mnt/etc/systemd/network/
-     
-      
+
+
     # Unmount
     sudo umount /mnt
 
@@ -122,7 +122,7 @@ Now we mount the EFI partition to add a bootloader entry called "test" which boo
 
     # Set correct label on EFI partition
     sudo dosfslabel /dev/sd<YOUR USB DEVICE>1 boot
-      
+
     # Mount EFI partition
     sudo mount /dev/sd<YOUR USB DEVICE>1 /mnt/
     # Create temp bootloader config file which we then copy
@@ -132,7 +132,7 @@ Now we mount the EFI partition to add a bootloader entry called "test" which boo
     options LABEL=test root=/dev/sda4 ro rootwait console=ttyS0 console=tty0
     EOF
     sudo cp /tmp/test.conf /mnt/loader/entries/
-      
+
     # Unmount
     sudo umount /mnt
 
@@ -142,7 +142,7 @@ using e.g. "ip a".
 
 Building and testing an image
 -----------------------------
-Current issues in poky means we have to apply a patch needs to be applied: 
+Current issues in poky means we have to apply a patch needs to be applied:
 `0001-Fix-automated-runtime-testing-using-SystemdbootTarge.patch` which is located in the meta-pelux_
 repo in `layers/poky/patch/`.
 
