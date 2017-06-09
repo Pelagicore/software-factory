@@ -11,5 +11,6 @@ Revision: |release|
     chapters/intro/*
     chapters/workflow/*
     chapters/baseplatform/index.rst
+    chapters/ci-and-cd/index.rst
     chapters/sdk/index.rst
 
