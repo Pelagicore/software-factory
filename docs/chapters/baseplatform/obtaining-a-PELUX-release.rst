@@ -4,13 +4,13 @@ Obtaining a PELUX release
 The following manifests can be used for a build:
 
 * `pelux-intel.xml` - For building the `core-image-pelux` image for Intel
-* `pelux-intel-qt.xml` - For building the `core-image-pelux-qt` image, which is the baseline with QtAS
+* `pelux-intel-qt.xml` - For building the `core-image-pelux-qt` image, which is the baseline with Qt Automotive Suite
 * `pelux-rpi.xml` - For building the `core-image-pelux` image for Raspberry Pi 3
 
 Variables:
 
 * Manifest, refers to what `<manifest-name>.xml` file you want to use, for example `pelux-intel.xml`. Each hardware platform targeted by the PELUX reference has its own manifest describing what other git repositories are needed for the build.
-* Image, refers to what version of PELUX should be built. Currently there are two versions: `core-image-pelux` and `core-image-pelux-qt`. The latter being a version that includes QtAS_ components that enable the NeptuneUI demo application.
+* Image, refers to what version of PELUX should be built. Currently there are two versions: `core-image-pelux` and `core-image-pelux-qt`. The latter being a version that includes Qt Automotive Suite components that enable the NeptuneUI demo application.
 
 Create a directory for the PELUX build. Instruct repo tool to fetch a manifest using the command `repo init`. In this context, branch denotes what branch of git repo `pelux-manifests` to use. Then make repo tool fetch all sources using the command `repo sync`.
 
@@ -39,4 +39,4 @@ Finally, build the desired image. See the variables description above for inform
 
 When the build is complete the result will be available in ``tmp/deploy/images/<machine>/``. It is possible to generate a number of different image formats, ranging from just the rootfs as a tarball to ready disk-images containing EFI-bootloader, configuration and rootfs and that can be written directly to a storage device. For PELUX, the preffered format for the Intel NUC are .wic images, which are complete disk-images.
 
-.. _QtAS: https://www.qt.io/qt-automotive-suite/
+.. _Qt Automotive Suite: https://www.qt.io/qt-automotive-suite/
