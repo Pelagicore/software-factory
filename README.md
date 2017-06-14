@@ -17,6 +17,15 @@ Maintainer: Joakim Gross <joakim.gross@pelagicore.com>
 * texlive-latex-extra (when building PDF)
 * texlive-latex-recommended (when building PDF)
 
+###  Install build dependencies on Debian
+
+```
+sudo apt-get install python-pip
+pip install sphinxcontrib-seqdiag sphinxcontrib-blockdiag \
+              sphinxcontrib-actdiag sphinxcontrib-actdiag \
+              sphinxcontrib-manpage
+```
+
 
 ## Building
 The project uses cmake to configure the build. Supported options are:
