@@ -4,13 +4,13 @@ Obtaining a PELUX release
 The following manifests can be used for a build:
 
 * `pelux-intel.xml` - For building the `core-image-pelux` image for Intel
-* `pelux-intel-qt.xml` - For building the `core-image-pelux-qt` image, which is the baseline with Qt Automotive Suite
+* `pelux-intel-qt.xml` - For building the `core-image-pelux-qt` image, which is the baseline with `Qt Automotive Suite`_
 * `pelux-rpi.xml` - For building the `core-image-pelux` image for Raspberry Pi 3
 
 Variables:
 
 * Manifest, refers to what `<manifest-name>.xml` file you want to use, for example `pelux-intel.xml`. Each hardware platform targeted by the PELUX reference has its own manifest describing what other git repositories are needed for the build.
-* Image, refers to what version of PELUX should be built. Currently there are two versions: `core-image-pelux` and `core-image-pelux-qt`. The latter being a version that includes Qt Automotive Suite components that enable the NeptuneUI demo application.
+* Image, refers to what version of PELUX should be built. Currently there are two versions: `core-image-pelux` and `core-image-pelux-qt`. The latter being a version that includes `Qt Automotive Suite`_ components that enable the NeptuneUI demo application.
 
 Create a directory for the PELUX build. Instruct repo tool to fetch a manifest using the command `repo init`. In this context, branch denotes what branch of git repo `pelux-manifests` to use. Then make repo tool fetch all sources using the command `repo sync`.
 
