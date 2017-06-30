@@ -38,7 +38,7 @@ Start by building the image:
 .. code-block:: bash
 
     mkdir test-automation && cd test-automation
-    repo init -u https://github.com/Pelagicore/pelux-manifests.git -m pelux-intel-qt.xml -b master
+    repo init -u https://github.com/Pelagicore/pelux-manifests.git -m pelux-intel-qtauto.xml -b master
     repo sync
     TEMPLATECONF=`pwd`/sources/meta-pelux-bsp-intel/conf-qt/ source sources/poky/oe-init-build-env build
     echo 'EFI_PROVIDER = "systemd-boot"' >> conf/local.conf
