@@ -5,7 +5,7 @@ PELUX provides a Software Development Kit (SDK), for quick and easy development 
 
 .. _`PELUX website`: http://pelux.io/downloads
 
-TBD: Information on how to use the SDK.
-
+.. include:: installing-the-sdk.rst
+.. include:: using-the-sdk-to-crosscompile.rst
 .. include:: template-service.rst
 .. include:: directory-structure.rst

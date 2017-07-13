@@ -16,6 +16,8 @@ code from github.
 
     git clone https://github.com/Pelagicore/template-service.git
 
+.. _template-service-compilation-label:
+    
 Compilation
 -----------
 
