@@ -5,6 +5,8 @@ Download the SDK for your hardware from the `PELUX website`_. The SDK is a very 
 
 .. note:: Note that the version number at the end of the SDK download file is not the version of the SDK but in fact the version number of poky, which is the upstream Yocto distribution PELUX is using.
 
+.. _installing-sdk:
+
 Installing the SDK
 ------------------
 
