@@ -9,3 +9,4 @@ PELUX provides a Software Development Kit (SDK), for quick and easy development 
 .. include:: using-the-sdk-to-crosscompile.rst
 .. include:: template-service.rst
 .. include:: directory-structure.rst
+.. include:: run-binary-on-target.rst
