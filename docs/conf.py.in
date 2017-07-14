@@ -100,7 +100,11 @@ actdiag_html_image_format = "SVG"
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = 'alabaster'
+# The Read the Docs theme is available from
+# - https://github.com/snide/sphinx_rtd_theme
+# - https://pypi.python.org/pypi/sphinx_rtd_theme
+# - python-sphinx-rtd-theme package (on Debian)
+html_theme = "sphinx_rtd_theme"
 
 # html_logo = None
 # html_favicon = None
