@@ -13,6 +13,7 @@ Maintainer: Joakim Gross <joakim.gross@pelagicore.com>
 * sphinxcontrib-blockdiag
 * sphinxcontrib-actdiag
 * sphinxcontrib-manpage
+* sphinx\_rtd\_theme
 * texlive-latex-base (when building PDF)
 * texlive-latex-extra (when building PDF)
 * texlive-latex-recommended (when building PDF)
@@ -23,7 +24,7 @@ Maintainer: Joakim Gross <joakim.gross@pelagicore.com>
 sudo apt-get install python-pip
 pip install sphinxcontrib-seqdiag sphinxcontrib-blockdiag \
               sphinxcontrib-actdiag sphinxcontrib-actdiag \
-              sphinxcontrib-manpage
+              sphinxcontrib-manpage sphinx_rtd_theme
 ```
 
 
