@@ -65,3 +65,26 @@ force-pushed to the forked repo, or they can be added on top of the existing com
 request will be updated either way.
 
 Whenever the team is satisfied with the changes, pull the changes in by accepting the pull request.
+
+Good commits
+============
+
+A good commit (or patch):
+
+#. is atomic: Each commit should contain only one logical change. Use of vague verbs (e.g "update")
+   and phrases like "this patch also" are usually a good indicator that commit is not atomic.
+
+#. has a good commit message associated with it.
+
+Good commit messages are important because of two reasons:
+
+#. Proper history: Each line in the source code can then be traced to the commit that changed it and
+   why. Humans tend to have bad memory so even the committer may not remember why they made some
+   particular changes after a few months or years of the commit.
+#. Ease of reviewing: The reviewer need to know why you are suggesting the changes in question when
+   you submit a pull-request and they can not always infer the rationale from the changes themselves.
+
+Keeping in mind that the topic of what qualifies as a good commit message, is highly subjective, the
+authors of this document follow and highly recommend `GNOME's commit message guidelines`_.
+
+.. _`GNOME's commit message guidelines`: https://wiki.gnome.org/Git/CommitMessages/
