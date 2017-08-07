@@ -88,3 +88,7 @@ Keeping in mind that the topic of what qualifies as a good commit message, is hi
 authors of this document follow and highly recommend `GNOME's commit message guidelines`_.
 
 .. _`GNOME's commit message guidelines`: https://wiki.gnome.org/Git/CommitMessages/
+
+Platform specific Tips and Tricks
+=================================
+* :ref:`githubTipsAndTricks`
