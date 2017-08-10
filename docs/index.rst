@@ -13,4 +13,5 @@ Revision: |release|
     chapters/baseplatform/index.rst
     chapters/ci-and-cd/index.rst
     chapters/sdk/index.rst
+    chapters/licensing/index.rst
 
