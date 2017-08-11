@@ -22,7 +22,7 @@ Maintainer: Joakim Gross <joakim.gross@pelagicore.com>
 
 ```
 sudo apt-get install python-pip
-pip install sphinxcontrib-seqdiag sphinxcontrib-blockdiag \
+sudo pip install sphinxcontrib-seqdiag sphinxcontrib-blockdiag \
               sphinxcontrib-actdiag sphinxcontrib-manpage sphinx_rtd_theme
 ```
 
