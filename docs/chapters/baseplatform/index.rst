@@ -12,3 +12,4 @@ PELUX as a platform is compiled from a lot of different projects with help of Yo
 .. include:: deploying-and-booting-the-image.rst
 .. include:: creating-sdk.rst
 .. include:: creating-a-manifest.rst
+.. include:: creating-a-new-layer.rst
