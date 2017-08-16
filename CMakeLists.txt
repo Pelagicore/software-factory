@@ -6,13 +6,6 @@
 
 cmake_minimum_required(VERSION 3.0.2)
 
-set(MAJOR_VERSION 0)
-set(MINOR_VERSION 1)
-set(PATCH_LEVEL 0)
-
-# The VERSION variable is used in the Sphinx config when creating a
-# version string.
-set(VERSION ${MAJOR_VERSION}.${MINOR_VERSION}.${PATCH_LEVEL})
+project(software-factory VERSION 0.1.0)
 
 add_subdirectory(docs)
-
