@@ -17,7 +17,7 @@ code from github.
     git clone https://github.com/Pelagicore/template-service.git
 
 .. _template-service-compilation-label:
-    
+
 Compilation
 -----------
 
@@ -32,7 +32,7 @@ distribution's package manager.
     mkdir build && cd build
     cmake .. && make -j4
 
-.. note:: The example above presents how to compile the template service natively for your host machine.
+.. note:: The example above presents how to compile the template service natively for your host machine, but it works the same for cross-compilation, since the SDK will set a different environment for cmake.
 
 .. _CMake: https://cmake.org/
 .. _CMake install webpage: https://cmake.org/install/

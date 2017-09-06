@@ -1,0 +1,3 @@
+[submodule "docs/swf-blueprint"]
+	path = docs/swf-blueprint
+	url = git@github.com:Pelagicore/software-factory-blueprint.git

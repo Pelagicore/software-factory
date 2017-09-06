@@ -1,0 +1,8 @@
+#
+# Key=Value. Don't keep '=' in the value
+#
+# Example: proj_name=PELUX
+
+proj_name=PELUX
+example-sdk-binary=template-service
+git_frontend=github
