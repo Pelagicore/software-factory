@@ -19,7 +19,12 @@
 import os
 import sys
 import subprocess
-# sys.path.insert(0, os.path.abspath('.'))
+
+THISDIR='@CMAKE_CURRENT_SOURCE_DIR@'
+
+# Include the blueprint path, and include the substitutions from the blueprint
+sys.path.append(os.path.abspath(os.path.join(THISDIR, 'swf-blueprint/docs/python_modules')))
+from substitutions import subst as blueprint
 
 # -- General configuration ------------------------------------------------
 
@@ -42,8 +47,11 @@ extensions = [
 
 # Substitutions for common names. Key is replaced value in the text of all .rst
 # documents.
-substs = {
-}
+project_substitutions = blueprint.substitutions(os.path.join(THISDIR, "swf-substitutions.txt"))
+
+# Combine/overwrite whatever was written by blueprint if there is a clash
+substs = blueprint.substitutions()
+substs.update(project_substitutions)
 
 # Duplicate all entries with different formatting options
 # This ensures that even formatted versions of the words in substs variable
@@ -56,6 +64,10 @@ for key in substs.keys():
 rst_epilog = ""
 for key in substs.keys():
     rst_epilog += ".. |%s| replace:: %s\n" % (key, substs[key])
+
+def setup(app):
+    for key in substs:
+        app.add_config_value(key, substs[key], 'env')
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -92,8 +104,6 @@ seqdiag_antialias = True
 # -- Options for actdiag --------------------------------------------------
 actdiag_antialias = True
 actdiag_html_image_format = "SVG"
-
-
 
 # -- Options for HTML output ----------------------------------------------
 
@@ -149,7 +159,6 @@ man_pages = [
     (master_doc, '@PROJECT_NAME@', u'@PROJECT_NAME@ Documentation',
      [author], 1)
 ]
-
 
 # -- Options for Texinfo output -------------------------------------------
 

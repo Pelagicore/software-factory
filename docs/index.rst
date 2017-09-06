@@ -8,10 +8,10 @@ Revision: |release|
     :maxdepth: 3
     :glob:
 
-    chapters/intro/*
-    chapters/workflow/*
+    chapters/intro/index.rst
+    chapters/workflow/index.rst
     chapters/baseplatform/index.rst
     chapters/ci-and-cd/index.rst
     chapters/sdk/index.rst
-    chapters/licensing/index.rst
+    swf-blueprint/docs/articles/licensing/index.rst
 
