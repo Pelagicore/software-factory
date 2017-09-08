@@ -16,7 +16,7 @@ pipeline {
             steps {
                 // Delete old files
                 sh 'rm -rf .[^.] .??* *'
-                
+
                 // Checkout the git repository and refspec pointed to by jenkins
                 checkout scm
 
@@ -25,7 +25,7 @@ pipeline {
                 sh "git submodule update"
             }
         }
-        
+
         // Configure the software with cmake
         stage('Configure') {
             steps {
@@ -48,7 +48,7 @@ pipeline {
                 // Store the artifacts of the entire build
                 archive "**/*"
             }
-        }        
+        }
     }
-    
+
 }
