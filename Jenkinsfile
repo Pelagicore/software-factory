@@ -19,6 +19,10 @@ pipeline {
                 
                 // Checkout the git repository and refspec pointed to by jenkins
                 checkout scm
+
+                // Update the submodule
+                sh "git submodule init"
+                sh "git submodule update"
             }
         }
         
