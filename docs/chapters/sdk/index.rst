@@ -11,6 +11,4 @@ specific target hardware platform.
 
 .. include:: installing-the-sdk.rst
 .. include:: ../../swf-blueprint/docs/articles/sdk/using-the-sdk-to-crosscompile.rst
-.. include:: template-service.rst
-.. include:: ../../swf-blueprint/docs/articles/sdk/directory-structure.rst
 .. include:: ../../swf-blueprint/docs/articles/sdk/run-binary-on-target.rst
