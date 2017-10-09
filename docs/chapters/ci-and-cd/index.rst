@@ -1,5 +1,10 @@
 Continuous integration and deployment
 *************************************
 
-.. include:: setting-up-automated-testing-yocto.rst
+.. toctree::
+   
+    ../../swf-blueprint/docs/articles/infrastructure/ci-cd/host
+    ../../swf-blueprint/docs/articles/infrastructure/ci-cd/jenkins
+    ../../swf-blueprint/docs/articles/infrastructure/ci-cd/build-slaves
+    setting-up-automated-testing-yocto
 
