@@ -1,5 +1,8 @@
-Obtaining a PELUX release
-=========================
+Building PELUX sources
+======================
+
+This chapter details how to download and configure the sources of a PELUX build, so
+that an image can be built.
 
 The following manifests can be used for a build:
 

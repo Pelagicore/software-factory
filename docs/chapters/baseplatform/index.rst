@@ -6,10 +6,14 @@ PELUX as a platform is compiled from a lot of different projects with help of Yo
 .. _Yocto: http://yoctoproject.org/
 .. _`their documentation`: https://www.yoctoproject.org/documentation
 
-.. include:: ../../swf-blueprint/docs/articles/baseplatform/prerequisites.rst
-.. include:: ../../swf-blueprint/docs/articles/baseplatform/using-the-repo-tool.rst
-.. include:: obtaining-a-PELUX-release.rst
-.. include:: deploying-and-booting-the-image.rst
-.. include:: ../../swf-blueprint/docs/articles/baseplatform/creating-sdk.rst
-.. include:: creating-a-manifest.rst
-.. include:: ../../swf-blueprint/docs/articles/baseplatform/creating-a-new-layer.rst
+.. toctree::
+   
+   ../../swf-blueprint/docs/articles/baseplatform/prerequisites
+   ../../swf-blueprint/docs/articles/baseplatform/using-the-repo-tool
+   building-PELUX-sources
+   deploying-the-image
+   booting-on-target-hardware
+   ../../swf-blueprint/docs/articles/baseplatform/creating-sdk
+   creating-a-manifest
+   ../../swf-blueprint/docs/articles/baseplatform/creating-a-new-layer
+   ../../swf-blueprint/docs/articles/baseplatform/variant-concept-in-yocto

@@ -1,17 +1,21 @@
-
 Welcome to the Software Factory documentation
 *********************************************
 Revision: |release|
 
-.. toctree::
-    :caption: Table of contents:
-    :maxdepth: 3
-    :glob:
+-------------------
 
-    chapters/intro/index.rst
-    chapters/workflow/index.rst
-    chapters/baseplatform/index.rst
-    chapters/ci-and-cd/index.rst
-    chapters/sdk/index.rst
-    swf-blueprint/docs/articles/templates/index.rst
-    swf-blueprint/docs/articles/licensing/index.rst
+The Software Factory documentation is the central space where we collect all useful information on how to work within the project.
+
+-------------------
+
+.. toctree::
+    :caption: Table of contents
+    :maxdepth: 3
+
+    chapters/workflow/index
+    chapters/baseplatform/index
+    chapters/ci-and-cd/index
+    chapters/sdk/index
+    swf-blueprint/docs/articles/templates/index
+    swf-blueprint/docs/articles/licensing/index
+    swf-blueprint/docs/articles/intro/index
