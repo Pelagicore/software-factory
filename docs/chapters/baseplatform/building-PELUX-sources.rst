@@ -4,54 +4,52 @@ Building PELUX sources
 This chapter details how to download and configure the sources of a PELUX build, so
 that an image can be built.
 
-The following manifests can be used for a build:
+To obtain a PELUX release, simply download the manifest (`pelux.xml`) used for
+building, and decide what image to build. Currently there are two versions:
+`core-image-pelux-minimal` and `core-image-pelux-qtauto-neptune`. The latter
+being a version that includes `Qt Automotive Suite`_ components that enable the
+NeptuneUI demo application.
 
-* `pelux-intel.xml` - For building the `core-image-pelux` image for Intel
-* `pelux-intel-qtauto.xml` - For building the `core-image-pelux-qtauto` image, which is the baseline with `Qt Automotive Suite`_
-* `pelux-rpi.xml` - For building the `core-image-pelux` image for Raspberry Pi 3
-
-Variables:
-
-* Manifest, refers to what `<manifest-name>.xml` file you want to use, for example
-  `pelux-intel.xml`. Each hardware platform targeted by the PELUX reference has its own manifest
-  describing what other git repositories are needed for the build.
-* Image, refers to what version of PELUX should be built. Currently there are two versions:
-  `core-image-pelux` and `core-image-pelux-qtauto`. The latter being a version that includes `Qt
-  Automotive Suite`_ components that enable the NeptuneUI demo application.
-
-Create a directory for the PELUX build. Instruct repo tool to fetch a manifest using the command
-`repo init`. In this context, branch denotes what branch of git repo `pelux-manifests` to use. Then
-make repo tool fetch all sources using the command `repo sync`.
+Create a directory for the PELUX build. Instruct repo tool to fetch a manifest
+using the command `repo init`. In this context, branch denotes what branch of
+git repo `pelux-manifests` to use. Then make repo tool fetch all sources using
+the command `repo sync`.
 
 .. code-block:: bash
 
     mkdir pelux
     cd pelux
-    repo init -u https://github.com/Pelagicore/pelux-manifests.git -m <manifest> -b <branch>
+    repo init -u https://github.com/Pelagicore/pelux-manifests.git -b <branch>
     repo sync
 
-When done fetching the sources, create a build directory and set up bitbake. ``TEMPLATECONF`` tells
-the ``oe-init-build-env`` script which path to fetch configuration samples from.
+When done fetching the sources, create a build directory and set up bitbake.
+``TEMPLATECONF`` tells the ``oe-init-build-env`` script which path to fetch
+configuration samples from.
 
-.. note:: The example below get the template configuration for the Intel BSP, adapt the path according to your current BSP.
+.. note:: The example below get the template configuration for the Intel BSP
+          without Qt Automotive Suite (QtAS). Use ``conf-qt`` as the last part
+          of the path to get QtAS support. The same pattern is used for the
+          Raspberry Pi BSP.
 
 .. code-block:: bash
 
-    TEMPLATECONF=`pwd`/sources/meta-pelux-bsp-intel/conf/ source sources/poky/oe-init-build-env build
+    TEMPLATECONF=`pwd`/sources/meta-pelux/meta-intel-extras/conf/ source sources/poky/oe-init-build-env build
 
-The script will create configs if there are no configs present, a message about created
-``conf/local.conf`` and ``conf/bblayers.conf`` files is normal.
+The script will create configs if there are no configs present, a message about
+created ``conf/local.conf`` and ``conf/bblayers.conf`` files is normal.
 
-Finally, build the desired image. See the variables description above for information on the different images.
+Finally, build the desired image. See the variables description above for
+information on the different images.
 
 .. code-block:: bash
 
     bitbake <image>
 
-When the build is complete the result will be available in ``tmp/deploy/images/<machine>/``. It is
-possible to generate a number of different image formats, ranging from just the rootfs as a tarball
-to ready disk-images containing EFI-bootloader, configuration and rootfs and that can be written
-directly to a storage device. For PELUX, the preferred format for the Intel NUC are .wic images,
-which are complete disk-images.
+When the build is complete the result will be available in
+``tmp/deploy/images/<machine>/``. It is possible to generate a number of
+different image formats, ranging from just the rootfs as a tarball to ready
+disk-images containing EFI-bootloader, configuration and rootfs and that can be
+written directly to a storage device. For PELUX, the preferred format for the
+Intel NUC are .wic images, which are complete disk-images.
 
 .. _Qt Automotive Suite: https://www.qt.io/qt-automotive-suite/
