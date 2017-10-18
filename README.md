@@ -52,5 +52,5 @@ send a letter to Creative Commons, PO Box 1866, Mountain View, CA
 
 Code and scripts are licensed under LGPL 2.1
 
-SPDX-License-Identifier: CC-BY-4.0
+SPDX-License-Identifier: CC-BY-SA-4.0
 
