@@ -19,3 +19,10 @@ The Software Factory documentation is the central space where we collect all use
     swf-blueprint/docs/articles/templates/index
     swf-blueprint/docs/articles/licensing/index
     swf-blueprint/docs/articles/intro/index
+
+.. toctree::
+    :caption: Categories
+    :maxdepth: 1
+
+    categories/howto.rst
+    categories/process.rst
