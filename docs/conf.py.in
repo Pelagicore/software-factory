@@ -42,7 +42,8 @@ extensions = [
     'sphinxcontrib.manpage',
     'sphinxcontrib.blockdiag',
     'sphinxcontrib.seqdiag',
-    'sphinxcontrib.actdiag'
+    'sphinxcontrib.actdiag',
+    'sphinxexts.taglist'
 ]
 
 # Substitutions for common names. Key is replaced value in the text of all .rst
