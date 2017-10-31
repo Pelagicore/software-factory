@@ -6,6 +6,9 @@
 
 cmake_minimum_required(VERSION 3.0.2)
 
-project(software-factory VERSION 0.1.0)
+project("PELUX Baseline Software Factory"
+        VERSION 0.1.0
+        LANGUAGES NONE
+)
 
 add_subdirectory(docs)
