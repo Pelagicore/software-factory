@@ -50,6 +50,8 @@ When the build is complete the result will be available in
 different image formats, ranging from just the rootfs as a tarball to ready
 disk-images containing EFI-bootloader, configuration and rootfs and that can be
 written directly to a storage device. For PELUX, the preferred format for the
-Intel NUC are .wic images, which are complete disk-images.
+Intel NUC are ``.wic`` images, which are complete disk-images. For the Raspberry
+Pi 3, the preferred format is ``.rpi-sdimg`` which can be directly written to
+the SD card.
 
 .. _Qt Automotive Suite: https://www.qt.io/qt-automotive-suite/
