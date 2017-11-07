@@ -27,9 +27,9 @@ When done fetching the sources, create a build directory and set up bitbake.
 configuration samples from.
 
 .. note:: The example below get the template configuration for the Intel BSP
-          without Qt Automotive Suite (QtAS). Use ``conf-qt`` as the last part
-          of the path to get QtAS support. The same pattern is used for the
-          Raspberry Pi BSP.
+          without Qt Automotive Suite (QtAS). Use ``intel-qtauto`` as the last
+          part of the path to get QtAS support. The same pattern is used for the
+          Raspberry Pi BSP (``rpi`` and ``rpi-qtauto``).
 
 .. code-block:: bash
 
