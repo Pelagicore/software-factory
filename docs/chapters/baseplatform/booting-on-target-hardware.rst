@@ -1,5 +1,6 @@
 Booting on target hardware
 ==========================
+.. note:: Login as user ``root``.
 
 NUC
 ---
@@ -13,4 +14,3 @@ Raspberry Pi 3
 Insert the SD-card into the Raspberry Pi and boot it up. Make sure to use the
 HDMI output.
 
-.. note:: Login as user ``root``.
