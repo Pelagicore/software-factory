@@ -33,7 +33,7 @@ configuration samples from.
 
 .. code-block:: bash
 
-    TEMPLATECONF=`pwd`/sources/meta-pelux/meta-intel-extras/conf/ source sources/poky/oe-init-build-env build
+    TEMPLATECONF=`pwd`/sources/meta-pelux/conf/variant/intel source sources/poky/oe-init-build-env build
 
 The script will create configs if there are no configs present, a message about
 created ``conf/local.conf`` and ``conf/bblayers.conf`` files is normal.
