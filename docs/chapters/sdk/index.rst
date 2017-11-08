@@ -9,6 +9,8 @@ specific target hardware platform.
 
 .. _`PELUX website`: http://pelux.io/downloads
 
-.. include:: installing-the-sdk.rst
-.. include:: ../../swf-blueprint/docs/articles/sdk/using-the-sdk-to-crosscompile.rst
-.. include:: ../../swf-blueprint/docs/articles/sdk/run-binary-on-target.rst
+.. toctree::
+    installing-the-sdk.rst
+    ../../swf-blueprint/docs/articles/sdk/installing-the-sdk.rst
+    ../../swf-blueprint/docs/articles/sdk/using-the-sdk-to-crosscompile.rst
+    ../../swf-blueprint/docs/articles/sdk/run-binary-on-target.rst

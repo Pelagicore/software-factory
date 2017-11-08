@@ -10,6 +10,7 @@ PELUX as a platform is compiled from a lot of different projects with help of Yo
    
    ../../swf-blueprint/docs/articles/baseplatform/prerequisites
    ../../swf-blueprint/docs/articles/baseplatform/using-the-repo-tool
+   ../../swf-blueprint/docs/articles/baseplatform/repo-manifests
    building-PELUX-sources
    ../../swf-blueprint/docs/articles/baseplatform/reproducible-yocto-builds.rst
    deploying-the-image

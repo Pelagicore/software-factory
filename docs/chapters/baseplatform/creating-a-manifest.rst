@@ -1,6 +1,4 @@
 
-.. include:: ../../swf-blueprint/docs/articles/baseplatform/repo-manifests.rst
-
 Creating a manifest
 -------------------
 
