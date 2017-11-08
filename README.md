@@ -8,6 +8,7 @@ Maintainer: Joakim Gross <joakim.gross@pelagicore.com>
 
 
 ## Dependencies
+* cmake
 * Sphinx
 * sphinxcontrib-seqdiag
 * sphinxcontrib-blockdiag
@@ -21,7 +22,7 @@ Maintainer: Joakim Gross <joakim.gross@pelagicore.com>
 ###  Install build dependencies on Debian
 
 ```
-sudo apt-get install python-pip
+sudo apt-get install cmake python-pip
 sudo pip install sphinxcontrib-seqdiag sphinxcontrib-blockdiag \
               sphinxcontrib-actdiag sphinxcontrib-manpage sphinx_rtd_theme
 ```
