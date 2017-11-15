@@ -10,6 +10,10 @@ building, and decide what image to build. Currently there are two versions:
 being a version that includes `Qt Automotive Suite`_ components that enable the
 NeptuneUI demo application.
 
+
+Building locally
+----------------
+
 Create a directory for the PELUX build. Instruct repo tool to fetch a manifest
 using the command `repo init`. In this context, branch denotes what branch of
 git repo `pelux-manifests` to use. Then make repo tool fetch all sources using
@@ -53,5 +57,85 @@ written directly to a storage device. For PELUX, the preferred format for the
 Intel NUC are ``.wic`` images, which are complete disk-images. For the Raspberry
 Pi 3, the preferred format is ``.rpi-sdimg`` which can be directly written to
 the SD card.
+
+Building with Vagrant
+---------------------
+
+When we build internally at Pelagicore in our CI system, we use vagrant.  Please
+note that we only run this setup in a GNU/Linux system at Pelagicore. It should
+still work under Windows or OSX, but we haven't tried it.
+
+Dependencies:
+^^^^^^^^^^^^^
+
+* Vagrant
+* Docker
+* Virtualization enabled in BIOS
+
+Procedure:
+^^^^^^^^^^
+
+1. Clone the pelux-manifests git repository.
+2. Start vagrant
+
+.. code-block:: bash
+
+    vagrant up
+
+
+3. Set variables to be used below
+
+.. code-block:: bash
+
+    export bitbake_image="core-image-pelux-minimal"
+    export yoctoDir="/home/vagrant/pelux_yocto"
+    export manifest="pelux.xml"
+    export variant="intel"
+
+4. Do repo init
+
+.. code-block:: bash
+
+    vagrant ssh -c "/vagrant/ci-scripts/do_repo_init ${manifest}"
+
+
+5. Setup bitbake with correct local.conf and bblayers.conf
+
+.. code-block:: bash
+
+    export templateconf="${yoctoDir}/sources/meta-pelux/conf/variant/${variant}"
+    vagrant ssh -c /vagrant/vagrant-cookbook/yocto/initialize-bitbake.sh \
+        ${yoctoDir} \
+        ${templateconf}"
+
+
+6. Bitbake the PELUX image
+
+.. code-block:: bash
+
+    vagrant ssh -c "/vagrant/vagrant-cookbook/yocto/build-images.sh \
+        ${yoctoDir} \
+        ${bitbake_image}"
+
+
+7. Move the built images to the host
+
+.. code-block:: bash
+
+    vagrant scp :${yoctoDir}/build/tmp/deploy/images ../images
+
+
+Don't put them into the source folder because then they will be syncroniced back
+into the docker instance into the `/vagrant` directory which might take a
+reasonable amount of resources to do.
+
+The container/virtual machine started via vagrant will sync the cloned git
+repository and use the manifests contained in it to set up the build
+environment. This means that the branch/commit currently checked out will
+determine what version is being built. The final step will copy the image
+directory containing the built images to the directory on the host where vagrant
+was started.
+
+For more detailed steps, refer to the scripts in `vagrant-cookbook`.
 
 .. _Qt Automotive Suite: https://www.qt.io/qt-automotive-suite/
