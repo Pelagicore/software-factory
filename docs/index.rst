@@ -16,6 +16,7 @@ The Software Factory documentation is the central space where we collect all use
     chapters/baseplatform/index
     chapters/ci-and-cd/index
     chapters/sdk/index
+    chapters/sde/index
     swf-blueprint/docs/articles/templates/index
     swf-blueprint/docs/articles/licensing/index
 
