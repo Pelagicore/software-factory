@@ -21,7 +21,7 @@ Maintainer: Joakim Gross <joakim.gross@pelagicore.com>
 
 ###  Install build dependencies on Debian
 
-```
+``` bash
 sudo apt-get install cmake python-pip
 sudo pip install sphinxcontrib-seqdiag sphinxcontrib-blockdiag \
               sphinxcontrib-actdiag sphinxcontrib-manpage sphinx_rtd_theme
@@ -33,11 +33,17 @@ The project uses cmake to configure the build. Supported options are:
 
 * `ENABLE_PDF` - Enables building the docs in PDF format. Set to OFF by default
 
-Configure and build from the git top dir like so:
+Check out the swf-blueprint submodule like so:
+``` bash
+    git submodule update --init
+```
 
+Configure and build from the git top dir like so:
+``` bash
     cmake -H. -Bbuild
     cd build
     make
+```
 
 After a successfull build you can find the documentation in `build/docs/html/`
 if you open the `index.html` in your browser you will see the entry point.
