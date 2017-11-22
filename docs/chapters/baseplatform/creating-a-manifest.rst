@@ -52,12 +52,13 @@ Below follows general recommendations for modifications of common files.
   * Image names must be updated to reflect your own image names (``core-image-pelux`` may become ``core-image-yourproject``)
   * In general, this file can be customized to suite your project's CI needs
 * The ``Vagrantfile`` should be usable as-is, but can be modified to accommodate your project's CI and virtualized build needs
-* The ``xml`` files in the repository are the actual manifest files. The manifest files in the
-  repository must be modified to indicate the correct repositories. It is common to structure the
-  manifets files in a hierachical fashion, such that a common base manifest is created, and
-  (possibly several) specialized manifests include this base manifest. An example of this can be
-  seen in the PELUX manifests repository, where the ``pelux-base.xml`` manifest is included in, for
-  instance, the ``pelux-intel.xml`` and ``pelux-rpi.xml`` manifests.
+* The ``xml`` file ``pelux.xml`` is the actual manifest file. The manifest file
+  has to be modified to indicate the correct repositories. It is possible to
+  structure manifest files in a hierarchical fashion, such that a common base
+  manifest and (possibly several) specialized manifests, for example per
+  architecture, or for qt inclusion. In PELUX, we're only using one manifest
+  since this is easier. The only downside is that we may download some layers
+  that we're not using later.
 
 .. [#repotool] https://source.android.com/source/using-repo
 .. [#pelux-manifests] https://github.com/Pelagicore/pelux-manifests
