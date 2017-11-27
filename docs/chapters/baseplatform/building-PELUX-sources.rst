@@ -10,6 +10,15 @@ building, and decide what image to build. Currently there are two versions:
 being a version that includes `Qt Automotive Suite`_ components that enable the
 NeptuneUI demo application.
 
+A note on development images
+----------------------------
+Both PELUX images are available as `-dev` versions, which, for example, sets an
+empty root password and allows empty password login via ssh. This is usually
+useful during development. The base image for PELUX sets a default root password
+to "root", unless the `-dev` image is used.
+
+The `-dev` images also install various useful tools for development and
+debugging, such as gdb, strace and so on.
 
 Building locally
 ----------------
