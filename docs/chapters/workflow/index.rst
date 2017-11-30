@@ -15,3 +15,4 @@ the box.
 
     ../../swf-blueprint/docs/articles/workflow/git-workflow.rst
     github-tips-and-tricks.rst
+    release-process.rst
