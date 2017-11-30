@@ -56,11 +56,13 @@ Below follows general recommendations for modifications of common files.
 * The ``Jenkinsfile`` sets up a Jenkins [#jenkins]_ pipeline [#jenkinspipeline]_
   for Continuous Integration (CI) builds of your manifest. This file must be
   modified to accomodate your project. In particular:
-  * Directory names must be updated (for example, the TEMPLATECONF variable bust
-    be set to match your layer structure)
-  * Image names must be updated to reflect your own image names
-    (``core-image-pelux`` may become ``core-image-yourproject``)
-  * In general, this file can be customized to suite your project's CI needs
+
+    * Directory names must be updated (for example, the ``TEMPLATECONF``
+      variable must be set to match your layer structure)
+    * Image names must be updated to reflect your own image names
+      (``core-image-pelux`` may become ``core-image-yourproject``)
+    * In general, this file can be customized to suit your project's CI needs
+
 * The ``Vagrantfile`` should be usable as-is, but can be modified to accommodate
   your project's CI and virtualized build needs
 * The ``xml`` file ``pelux.xml`` is the actual manifest file. The manifest file
