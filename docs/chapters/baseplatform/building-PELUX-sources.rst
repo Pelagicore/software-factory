@@ -12,13 +12,16 @@ NeptuneUI demo application.
 
 A note on development images
 ----------------------------
-Both PELUX images are available as `-dev` versions, which, for example, sets an
-empty root password and allows empty password login via ssh. This is usually
-useful during development. The base image for PELUX sets a default root password
-to "root", unless the `-dev` image is used.
+Both PELUX images are available as `-dev` variants, which include some extra
+development and debugging tools. The `-dev` images also include the debug
+packages for the image, so beware that this image can get rather large.
 
-The `-dev` images also install various useful tools for development and
-debugging, such as gdb, strace and so on.
+It should be noted that the regular image is *not* a production ready image. For
+a production project, it is recommended to create an image that can be based on
+the PELUX image to begin with, but one will probably want to create a custom
+image eventually, as the project evolves further and further away from vanilla
+PELUX. For example, a PELUX-based image has an empty root password and an ssh
+server installed by default.
 
 Building locally
 ----------------
