@@ -69,6 +69,8 @@ release:
 
 The branch name is generic and should map to a Yocto release branch name,
 whereas the git tag is specific and maps to a specific commit on that branch.
+Once set and part of a release, the tag should not be moved. See the reasoning
+around versioning above.
 
 The following of our own layers are included in a PELUX baseline release:
 

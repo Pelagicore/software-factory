@@ -13,6 +13,6 @@ the box.
     :caption: Table of contents
     :maxdepth: 3
 
-    ../../swf-blueprint/docs/articles/workflow/git-workflow.rst
+    ../../../swf-blueprint/docs/articles/workflow/git-workflow.rst
     github-tips-and-tricks.rst
-    release-process.rst
+
