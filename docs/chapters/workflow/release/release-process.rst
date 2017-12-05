@@ -84,6 +84,7 @@ For the PELUX Baseline Software Factory, we collect the following attributes to
 tie them to a release:
 
 * Branch name
+* Git tag
 
 For the Software Factory, the branch name should match the version number.
 
