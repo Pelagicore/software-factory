@@ -7,4 +7,5 @@ TBD
     :maxdepth: 3
 
     release-process
+    howto-release-pelux
 
