@@ -95,11 +95,6 @@ Release notes
     ``PELUX_<VERSION>_Release_Notes`` where <VERSION> is the version number of
     the release.
 
-How-to release PELUX
-^^^^^^^^^^^^^^^^^^^^
-TBD
-
-
 Binary release
 --------------
 TBD
