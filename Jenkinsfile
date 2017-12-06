@@ -45,8 +45,17 @@ pipeline {
 
         stage('Archive') {
             steps {
-                // Store the artifacts of the entire build
-                archive "**/*"
+                script {
+                    // Only store the HTML output in a directory with the same name
+                    // as the branch it is on, except we replace slashes with
+                    // dashes.
+                    String directoryName = env.BRANCH_NAME.replace("/","-")
+                    sh "rm -rf ${directoryName}"
+                    sh "mv build/docs/html/ ${directoryName}"
+
+                    // Archive
+                    archive "${directoryName}/**/*"
+                }
             }
         }
     }
