@@ -8,7 +8,7 @@
 
 pipeline {
     agent {
-        node { label 'Sphinx' }
+        node { label 'master' }
     }
 
     stages {
@@ -56,6 +56,13 @@ pipeline {
                     // Archive
                     archive "${directoryName}/**/*"
                 }
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                sh "rm -rf /var/www/software-factory/${directoryName}"
+                sh "cp -R ${directoryName} /var/www/software-factory/"
             }
         }
     }
