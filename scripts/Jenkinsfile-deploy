@@ -1,0 +1,88 @@
+/*
+ * This file is part of the Software Factory project
+ * Copyright (C) Pelagicore AB
+ * SPDX-License_identifier: LGPL-2.1
+ * This file is subject to the terms of the LGPL-2.1 license.
+ * Please see the LICENSE file for details.
+ */
+
+//
+// Please note, this will only work on the Jenkins set up used for pelux.io
+// The only reasons for it being in this repo are 1) it has to do with the PELUX
+// Software Factory, and 2) it keeps the script under version control rather
+// than on the Jenkins instance.
+//
+// In short, this script looks for all branches on the remote, tries to fetch
+// build artifacts for them and puts them in a staging directory before finally
+// removing the old SWF dir and renaming the staging to be the new SWF
+// directory.
+//
+
+// This can only be run on master, which is where we have web server access (/var/www)
+node('master') {
+
+    // For scope reasons we define it here
+    def branchList = null
+
+    // We copy everything to a staging directory to avoid 404 while the job is running
+    def stagingDirectory = "/var/www/software-factory-staging/"
+    def swfDirectory = '/var/www/software-factory/'
+
+    // Bash script that lists all branches on the remote
+    def branchFinder = '''
+        BRANCHES=$(git ls-remote --heads origin | awk '{ print $2 }')
+        for BRANCH in $BRANCHES; do
+            echo ${BRANCH##refs/heads/}
+        done
+    '''
+
+    stage('Checkout') {
+        checkout scm
+
+    	// List all branches on the remote, but strip the refs/heads/ part
+        branchList = sh(returnStdout: true, script: branchFinder).trim().split("\n")
+    }
+
+    stage('Setup staging') {
+        // Remove any traces of an old staging directory, setup a clean one
+        sh 'rm -rf ' + stagingDirectory
+        sh 'mkdir ' + stagingDirectory
+    }
+
+    stage('Copy artifacts') {
+        for (branch in branchList) {
+            echo "Copying artifacts to workspace for branch: " + branch
+            try {
+                copyArtifacts projectName: 'software-factory/' + branch, target: stagingDirectory, selector: lastSuccessful(), fingerprintArtifacts: true
+            } catch (error) {
+                // This usually means the build wasn't available or something
+                // similar, which can happen if the build hasn't run before
+                // this deploy script runs, for example. This is not a problem.
+                echo "Couldn't copy artifacts for software-factory/" + branch
+            }
+        }
+
+        // Create some convenience symlinks
+        sh 'cd ' + stagingDirectory + ' && ln -s master latest && ln -s master current'
+    }
+
+    stage('Deploy') {
+        try {
+            // Do a recursive diff
+            sh 'diff -qr ' + stagingDirectory + ' ' + swfDirectory
+            // If we end up here, there was no diff, so no need to deploy
+            echo "Was no diff between staging and production, won't deploy"
+            sh 'rm -rf ' + stagingDirectory
+
+        } catch(error) {
+            // If we end up here, there is a diff, and we proceed with
+            echo "Staging and production differs, will deploy"
+
+            // Remove old SWF directory
+            sh 'rm -rf ' + swfDirectory
+            // Move staging directory to SWF directory
+            sh 'mv ' + stagingDirectory + ' ' + swfDirectory
+        }
+
+    }
+}
