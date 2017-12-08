@@ -1,0 +1,144 @@
+#!/usr/bin/groovy
+
+/*
+ * This file is part of the Software Factory project
+ * Copyright (C) Pelagicore AB
+ * SPDX-License_identifier: LGPL-2.1
+ * This file is subject to the terms of the LGPL-2.1 license.
+ * Please see the LICENSE file for details.
+ */
+
+/* Please note, this will only work on the Jenkins set up used for pelux.io
+ * The only reasons for it being in this repo are 1) it has to do with the PELUX
+ * Software Factory, and 2) it keeps the script under version control rather
+ * than on the Jenkins instance.
+ *
+ * In short, this script looks for all tags on the remote, and builds the SWF
+ * for them, plus master. If there has been changes since last successful build,
+ * we build all tags and branches, and deploy them to the web server
+ */
+
+// By running git ls-remote we can find all branches and tags on the remote for
+// this git. We then parse the data into a list of SHA IDs and a list of branch
+// names and tag names.
+def branchesAndTags = {
+    // List all tags on the remote, and list all branches on the remote
+    String tags = sh returnStdout: true, script: "git ls-remote --tags --refs origin"
+    String branches = sh returnStdout: true, script: "git ls-remote --heads origin"
+
+    // Combine the two lists and split on newline.
+    // .splitEachLine() is apparently broken in Jenkins :(
+    String[] rawTargets = (tags + branches).split('\n')
+    String[] shaList = []
+    String[] buildList = []
+
+    // For each line, we save the sha-id and the branch/tag name
+    for (line in rawTargets) {
+        record = line.split('\t')
+
+        // We remove the refs/heads/ or refs/tags/ from the output
+        String cleanName = record[1].replaceAll(/refs\/(heads|tags)\//, "")
+
+        // Save the parts in their respective lists
+        shaList += record[0]
+        buildList += cleanName
+    }
+
+    // Construct a list to return
+    return [shaList, buildList]
+}
+
+// We only want to run further if there is a difference in which SHA IDs are
+// listed for the branches and tags. We compare the file in this build with the
+// file from the latest successful build to check this.
+def shouldWeRun = { String shaFile ->
+    // Check the list of sha IDs from last successful build with the current one
+    copyArtifacts projectName: '${JOB_NAME}', target: "latestBuild", optional: true, selector: lastSuccessful()
+    int shouldRun = sh returnStatus: true, script: "diff -q latestBuild/${shaFile} ${shaFile}"
+    sh "rm -rf latestBuild"
+
+    // Run if forced to or if there was a diff
+    return params.FORCE_DEPLOY || shouldRun != 0
+}
+
+// We run this on any node that has Sphinx and web server access
+node('Sphinx && WWW') {
+
+    // For scope reasons we define it here
+    String[] buildList = []
+
+    // We copy everything to a staging directory to avoid 404 while the job is running
+    String stagingDirectory = env.SWF_STAGING_DIR?: "/tmp/software-factory-staging/"
+    String swfDirectory = env.SWF_DEPLOY_DIR?: "/var/www/software-factory/"
+
+    // Artifact with sha ids
+    String shaFile = "shaids.txt"
+
+    stage('Checkout') {
+        // Make sure we get a clean build
+        deleteDir()
+
+        // Clone from git etc
+        checkout scm
+        sh "git submodule init"
+        sh "git submodule update"
+
+        // Get list of branches and tags to build, deconstruct the returned list
+        (shaList, buildList) = branchesAndTags()
+
+        // Save the list of refs until next time
+        writeFile file: shaFile, text: shaList.join('\n')
+        archiveArtifacts shaFile
+    }
+
+    // Check if we should go any further or not
+    if (!shouldWeRun(shaFile)) {
+        echo "No difference in refs from last run, no need to run further"
+        currentBuild.result = 'SUCCESS'
+        return
+    }
+
+    stage('Setup staging') {
+        // Remove any traces of an old staging directory, setup a clean one
+        sh "rm -rf ${stagingDirectory}"
+        sh "mkdir ${stagingDirectory}"
+    }
+
+    stage('Build') {
+        for (build in buildList) {
+            // How do we build for each tag/branch
+            sh "git checkout ${build}"
+            sh "git submodule update"
+
+            // Since we want to create directories from the names, we replace
+            // forward slashes with forward dashes
+            String buildName = build.replace("/","-")
+            String buildDir = "build-${buildName}"
+            String buildParams = "-DENABLE_PDF=OFF "
+
+            sh "rm -rf ${buildDir}"
+            sh "cmake -H. -B${buildDir} ${buildParams}"
+            sh "cd ${buildDir} && make"
+
+            // Name it appropriately
+            sh "mv ${buildDir}/docs/html/ ${buildName}"
+
+            // Copy to staging area
+            sh "cp -r ${buildName} ${stagingDirectory}"
+
+            // Delete the build dir
+            sh "rm -rf ${buildDir}"
+        }
+
+        // Create some convenience symlinks for master/latest/current
+        sh "cd ${stagingDirectory} && ln -s master latest && ln -s master current"
+    }
+
+    stage('Deploy') {
+        // Remove old SWF directory
+        sh "rm -rf ${swfDirectory}"
+        // Move staging directory to SWF directory
+        sh "mv ${stagingDirectory} ${swfDirectory}"
+    }
+}
+
