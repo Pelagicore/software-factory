@@ -58,7 +58,15 @@ Prepare the manifest
 * Make sure the manifest builds properly in the CI system for all variants
   without any unexpected warnings and with no errors.
 * Make sure each variant works on target as intended.
+* Make sure the SDK builds properly for all variants
 * Create a tag in the release branch.
+
+Prepare the SDE
+^^^^^^^^^^^^^^^
+* Make sure the SDE can be used with the latest build of the platform SDK for
+  all variants available
+* Create a release branch
+* Create a tag in the release branch
 
 Prepare the Software Factory Baseline
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -76,6 +84,7 @@ Prepare the release notes
 * Write down all the information from the steps done before touching any
   files into the release notes.
 * Point out the branch, tag and commit for the manifest used in the release.
+* Point out the branch, tag and commit for the SDE used in the release.
 * Point out the branch, tag and commit for the PELUX Software Factory
   Baseline used in the release.
 * Mention that the release notes themselves are part of the release.

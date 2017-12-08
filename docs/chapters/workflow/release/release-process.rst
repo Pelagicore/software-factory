@@ -19,16 +19,16 @@ List of artifacts
 - A manifest file (.xml) pointing out all layers used in a Yocto build of the
   PELUX baseline. Would typically be `pelux.xml` in the pelux-manifests
   repository.
+- A version of the PELUX SDE
 - A version of the PELUX Baseline Software Factory + Software Factory Blueprint,
-  with instructions matching the platform one can build with the beforementioned
-  manifest file.
+  with instructions matching the platform and SDE so that one can build with the
+  beforementioned manifest file.
 - A file with release notes containing:
     - Release version and name.
     - Major changes since last release.
     - Instructions or pointers to instructions that have changed as a result of
       the changes since last release.
     - This list of artifacts.
-
 
 Component attributes for a PELUX release
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -77,6 +77,13 @@ The following of our own layers are included in a PELUX baseline release:
 * meta-bistro
 * meta-pelux
 * meta-template
+
+PELUX SDE
+"""""""""
+For the PELUX SDE, we collect the following attributes to tie it to a release:
+
+* Branch name
+* Git tag
 
 PELUX Baseline Software Factory
 """""""""""""""""""""""""""""""
