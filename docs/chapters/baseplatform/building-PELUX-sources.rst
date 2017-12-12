@@ -116,7 +116,7 @@ Procedure:
 .. code-block:: bash
 
     export templateconf="${yoctoDir}/sources/meta-pelux/conf/variant/${variant}"
-    vagrant ssh -c /vagrant/vagrant-cookbook/yocto/initialize-bitbake.sh \
+    vagrant ssh -c "/vagrant/vagrant-cookbook/yocto/initialize-bitbake.sh \
         ${yoctoDir} \
         ${templateconf}"
 
