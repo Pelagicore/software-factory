@@ -87,7 +87,13 @@ Dependencies:
 Procedure:
 ^^^^^^^^^^
 
-1. Clone the pelux-manifests git repository.
+1. Clone the pelux-manifests git repository with submodule
+
+.. code-block:: bash
+
+    git clone --recurse-submodules git@github.com:Pelagicore/pelux-manifests.git
+
+
 2. Start vagrant
 
 .. code-block:: bash
