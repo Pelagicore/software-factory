@@ -140,6 +140,7 @@ Procedure:
 
 .. code-block:: bash
 
+    vagrant plugin install vagrant-scp
     vagrant scp :${yoctoDir}/build/tmp/deploy/images ../images
 
 
