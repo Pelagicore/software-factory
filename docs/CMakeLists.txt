@@ -47,6 +47,16 @@ configure_file(
     "${BINARY_BUILD_DIR}/conf.py"
     @ONLY)
 
+add_custom_target(spell-check
+    COMMAND "${CMAKE_CURRENT_SOURCE_DIR}/check_spelling.sh" "-q" -w "${CMAKE_CURRENT_SOURCE_DIR}"
+    COMMENT "Performing spell check"
+)
+
+option(PERFORM_SPELL_CHECK "Perform the spell check" ON)
+if(PERFORM_SPELL_CHECK)
+    add_dependencies(doc spell-check)
+endif()
+
 add_custom_target(sphinx-html
     ${SPHINX_EXECUTABLE}
         -q -W -b html
