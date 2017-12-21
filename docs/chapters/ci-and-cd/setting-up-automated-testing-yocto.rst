@@ -23,7 +23,7 @@ rootfs and kernel that should be tested. The tests are then triggered using an s
 done the target is rebooted once more so it ends up in testmaster image again.
 
 There are hooks for enabling bitbake to power-cycle the NUC, which is required if the testing should be able
-to recover from e.g. images that doesn't boot. Without those hooks it depends on that a reboot can be initated over an
+to recover from e.g. images that doesn't boot. Without those hooks it depends on that a reboot can be initiated over an
 ssh connection. This how-to will not describe these hooks though.
 
 
@@ -46,14 +46,14 @@ Start by building the image:
 
 We will deploy this image to a USB-stick with the following partition scheme:
 
-=========== ========== ========== =======
-Partition # Filesystem Label      Comment
-=========== ========== ========== =======
-1           vfat       boot
+=========== =========== ========== =======
+Partition # File system Label      Comment
+=========== =========== ========== =======
+1           vfat        boot
 2           ext3
 3           swap
-4           ext3       testrootfs Will be mounted by scripts, so need correct label
-=========== ========== ========== =======
+4           ext3        testrootfs Will be mounted by scripts, so need correct label
+=========== =========== ========== =======
 
 Instead of deploying directly to the USB-stick using mkefidisk.sh we run mkefidisk on a file-backed loop-device
 in order to leave more space at the end of the disk for partition #4. Mkefidisk would otherwise grow the partition #2
@@ -116,7 +116,7 @@ Now mount the testmaster rootfs in order to do some changes there:
     # Unmount
     sudo umount /mnt
 
-Now we mount the EFI partition to add a bootloader entry called "test" which boots the kernel and filesystem under test.
+Now we mount the EFI partition to add a bootloader entry called "test" which boots the kernel and file system under test.
 
 .. code-block:: bash
 
@@ -162,8 +162,8 @@ following to conf/local.conf
     TEST_TARGET_IP = "<IP of NUC>"
     TEST_SERVER_IP = "<IP of machine used for building>"
 
-Sometimes we need to set TEST_SERVER_IP, although that shouldn't be neccesary according to the docs.
-This might be related to multiple network interfaces confusing the autodetection.
+Sometimes we need to set TEST_SERVER_IP, although that shouldn't be necessary according to the docs.
+This might be related to multiple network interfaces confusing the auto-detection.
 
 You can now build and test basically any image using ``bitbake -c testimage <my image>``, e.g.:
 

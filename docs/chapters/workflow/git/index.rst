@@ -6,7 +6,7 @@ we try to work with version control, and git in particular, within PELUX.
 
 Note that while the instructions below are specific for git, the general process
 is possible to follow in any distributed version control system, and the
-instructions for github should more or less work for bitbucket and gitlab out of
+instructions for GitHub should more or less work for Bitbucket and GitLab out of
 the box.
 
 .. toctree::
