@@ -28,7 +28,7 @@ Before touching any files
 * Decide on what Yocto release to follow. If this is a major release then
   this is usually the latest Yocto release. If this is minor release, then
   this was already decided when the major release was done, and you should
-  not change it.
+  not change it. It can be completely valid to support several Yocto releases.
 * Decide on what Qt version to support. The Qt project does not follow the
   same release cadence as the Yocto project does. This will typically be the
   latest Qt version on a major release, and the same as for the major
@@ -58,7 +58,8 @@ Prepare the manifest
 * Make sure the manifest builds properly in the CI system for all variants
   without any unexpected warnings and with no errors.
 * Make sure each variant works on target as intended.
-* Make sure the SDK builds properly for all variants
+* Make sure the SDK builds properly for all variants and that it works for
+  cross-compilation.
 * Create a tag in the release branch.
 
 Prepare the SDE

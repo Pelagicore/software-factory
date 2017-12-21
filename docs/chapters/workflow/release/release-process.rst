@@ -18,11 +18,14 @@ List of artifacts
 ^^^^^^^^^^^^^^^^^
 - A manifest file (.xml) pointing out all layers used in a Yocto build of the
   PELUX baseline. Would typically be `pelux.xml` in the pelux-manifests
-  repository.
+  repository. If the upcoming release is targeting several poky releases, a
+  separate manifest should be used for each poky release targeted.
 - A version of the PELUX SDE
 - A version of the PELUX Baseline Software Factory + Software Factory Blueprint,
   with instructions matching the platform and SDE so that one can build with the
-  beforementioned manifest file.
+  beforementioned manifest file(s). This means that there could be a need for
+  several versions of these as well, if there are changes in instructions
+  between releases.
 - A file with release notes containing:
     - Release version and name.
     - Major changes since last release.
