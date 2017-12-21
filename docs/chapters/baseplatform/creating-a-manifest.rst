@@ -55,7 +55,7 @@ Below follows general recommendations for modifications of common files.
   to your project needs for Docker builds
 * The ``Jenkinsfile`` sets up a Jenkins [#jenkins]_ pipeline [#jenkinspipeline]_
   for Continuous Integration (CI) builds of your manifest. This file must be
-  modified to accomodate your project. In particular:
+  modified to accommodate your project. In particular:
 
     * Directory names must be updated (for example, the ``TEMPLATECONF``
       variable must be set to match your layer structure)

@@ -144,7 +144,7 @@ Procedure:
     vagrant scp :${yoctoDir}/build/tmp/deploy/images ../images
 
 
-Don't put them into the source folder because then they will be syncroniced back
+Don't put them into the source folder because then they will be synchronized back
 into the docker instance into the `/vagrant` directory which might take a
 reasonable amount of resources to do.
 

@@ -50,7 +50,7 @@ After a successfull build you can find the documentation in `build/docs/html/`
 if you open the `index.html` in your browser you will see the entry point.
 
 ### Understanding Spell Check
-A spell check is performed during the build step by default. It uses in-built
+A spell check is performed during the build step by default. It uses built-in
 language specific dictionaries and project specific dictionaries (aspell.en.pws)
 to verify the spellings and causes the build to fail in case of any typos.
 
