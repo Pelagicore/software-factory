@@ -9,6 +9,12 @@ The Software Factory documentation is the central space where we collect all use
 -------------------
 
 .. toctree::
+    :caption: About
+    :maxdepth: 2
+
+    swf-blueprint/docs/articles/intro/index.rst
+
+.. toctree::
     :caption: Table of contents
     :maxdepth: 3
 
