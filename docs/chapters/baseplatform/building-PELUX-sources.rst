@@ -81,8 +81,13 @@ Dependencies:
 ^^^^^^^^^^^^^
 
 * Vagrant
-* Docker
+* Docker CE
 * Virtualization enabled in BIOS
+
+.. note:: Ubuntu and Debian both have very old versions of Docker in their apt
+          repositories. Follow the steps at `docker.io
+          <https://docs.docker.com/engine/installation/linux/docker-ce/debian/>`_
+          to install the latest version of Docker.
 
 Procedure:
 ^^^^^^^^^^
