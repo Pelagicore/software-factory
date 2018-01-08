@@ -18,11 +18,12 @@ Maintainer: Joakim Gross <joakim.gross@pelagicore.com>
 * texlive-latex-base (when building PDF)
 * texlive-latex-extra (when building PDF)
 * texlive-latex-recommended (when building PDF)
+* aspell-en (when invoking a spell check)
 
 ###  Install build dependencies on Debian
 
 ``` bash
-sudo apt-get install cmake python-pip
+sudo apt-get install cmake python-pip aspell-en
 sudo pip install sphinxcontrib-seqdiag sphinxcontrib-blockdiag \
               sphinxcontrib-actdiag sphinxcontrib-manpage sphinx_rtd_theme
 ```
