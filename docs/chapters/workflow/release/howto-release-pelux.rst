@@ -29,6 +29,8 @@ Before touching any files
   this is usually the latest Yocto release. If this is minor release, then
   this was already decided when the major release was done, and you should
   not change it. It can be completely valid to support several Yocto releases.
+  The format for the tags should then be ``<tagname>/<branch>``, since tags are
+  unique in the repository
 * Decide on what Qt version to support. The Qt project does not follow the
   same release cadence as the Yocto project does. This will typically be the
   latest Qt version on a major release, and the same as for the major
@@ -40,7 +42,9 @@ Prepare the manifest
 
   * Create a branch in each layer we maintain matching the Yocto release
     that this PELUX release is targeting. This probably already exists, in
-    which case make sure that the branch is up-to-date.
+    which case make sure that the branch is up-to-date. For most cases, since we
+    usually target the latest release, this means pushing master to the release
+    branch.
   * Create a tag in the branch pointing to the latest commit in the branch.
 
 * Create a release branch in pelux-manifests.
@@ -51,7 +55,7 @@ Prepare the manifest
       tags in our own layers for convenience, and to make maintenance
       easier, but don't point to them here.
     * Make sure the commits pointed to are on the branches matching the
-      Yocto release we're targeting.
+      Yocto release we're targeting, and that they match what the tags point to.
     * For the Qt layers, point to revisions for the Qt release targeted in
       this PELUX Baseline release.
 
@@ -60,7 +64,7 @@ Prepare the manifest
 * Make sure each variant works on target as intended.
 * Make sure the SDK builds properly for all variants and that it works for
   cross-compilation.
-* Create a tag in the release branch.
+* Create a tag in the release branch in pelux-manifests.
 
 Prepare the SDE
 ^^^^^^^^^^^^^^^
