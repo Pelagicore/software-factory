@@ -48,8 +48,8 @@ Below follows general recommendations for modifications of common files.
 * The vagrant-cookbook directory should contain a ``git submodule`` pointing to
   ``git@github.com:Pelagicore/vagrant-cookbook.git``, or a different repository
   containing vagrant scripts. This submodule is used by the ``Vagrantfile``, and
-  is only needed if Vagrant [#vagrant]_ is used for the project.  *
-  CONTRIBUTING, LICENSE, and README should be updated according to the
+  is only needed if Vagrant [#vagrant]_ is used for the project.
+* CONTRIBUTING, LICENSE, and README should be updated according to the
   ``pelux-manifests`` license and your project guidelines
 * The ``Dockerfile`` can likely be left as-is, and can be customized according
   to your project needs for Docker builds

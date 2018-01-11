@@ -2,9 +2,9 @@
 
 Downloading the PELUX-SDE
 -------------------------
-The Software Development Environment for PELUX BASELINE can be found at PELUX-SDE-GITHUB-REPO_.
+The Software Development Environment for PELUX BASELINE can be found at `PELUX SDE GitHub Repo`_.
 
-.. _PELUX-SDE-GITHUB-REPO: https://github.com/Pelagicore/PELUX-SDE
+.. _PELUX SDE GitHub Repo: https://github.com/Pelagicore/PELUX-SDE
 
 Related articles
 ----------------

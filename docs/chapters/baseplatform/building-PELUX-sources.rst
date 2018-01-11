@@ -13,8 +13,7 @@ NeptuneUI demo application.
 A note on development images
 ----------------------------
 Both PELUX images are available as `-dev` variants, which include some extra
-development and debugging tools. The `-dev` images also include the debug
-packages for the image, so beware that this image can get rather large.
+development and debugging tools.
 
 It should be noted that the regular image is *not* a production ready image. For
 a production project, it is recommended to create an image that can be based on
