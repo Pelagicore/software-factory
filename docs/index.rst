@@ -1,6 +1,6 @@
 Welcome to the Software Factory documentation
 *********************************************
-Revision: |release|
+Version |version|
 
 -------------------
 

@@ -7,7 +7,7 @@
 cmake_minimum_required(VERSION 3.0.2)
 
 project("PELUX Baseline Software Factory"
-        VERSION 0.1.0
+        VERSION 1.0
         LANGUAGES NONE
 )
 
