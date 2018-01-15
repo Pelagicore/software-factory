@@ -121,16 +121,16 @@ requires applications designed to be ran in a container environment which is
 not the case in PELUX. Because of those two reasons, this solution hasn't been
 retained for PELUX.
 
-`Adaptive Autosar App`_
+`Adaptive AUTOSAR UCM`_
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-An Adaptive Autosar application in charge of distributing updates across the
-entire car could potentially be developed in the future and become a standard
-for the industry. However, as of today, it is purely speculative, it would
-require a high stage of integration into an actual car and it would still
-require some sort of component in the PELUX side to apply the updates. While
-this is useful to keep in mind for the future, this can not be retained for
-PELUX.
+The Adaptive Autosar `Update and Configuration Management` functional cluster
+that is in charge of distributing updates across the vehicle could potentially 
+be developed in the future and become a standard for the industry. However, as
+of today, it is purely speculative, it would require a high stage of
+integration into an actual vehicle and it would still require some sort of
+component in the PELUX Linux platform side to apply the updates. While this is
+useful to keep in mind for the future, this can not be retained for PELUX.
 
 `Mender`_
 ^^^^^^^^^
@@ -233,7 +233,7 @@ References
 .. _Swupd: https://github.com/clearlinux/swupd-client
 .. _Fwup: https://github.com/fhunleth/fwup
 .. _Resin: https://resin.io/
-.. _Adaptive Autosar App: https://vector.com/congress/files/presentations/VeCo16_24_30Nov_Reithalle_Markl_Vector.pdf
+.. _Adaptive Autosar UCM: https://www.autosar.org/fileadmin/user_upload/standards/adaptive/17-10/AUTOSAR_SWS_UpdateAndConfigManagement.pdf
 .. _Mender: https://mender.io/
 .. _OSTree: https://ostree.readthedocs.io/en/latest/
 .. _QtOTA: http://doc.qt.io/QtOTA/
