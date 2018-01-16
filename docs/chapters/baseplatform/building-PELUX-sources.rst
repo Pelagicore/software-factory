@@ -27,8 +27,12 @@ Building locally
 
 Create a directory for the PELUX build. Instruct repo tool to fetch a manifest
 using the command `repo init`. In this context, branch denotes what branch of
-git repo `pelux-manifests` to use. Then make repo tool fetch all sources using
-the command `repo sync`.
+git repo `pelux-manifests` to use. If you want to use a released version of
+PELUX, use the SHA id of the commit pointed to by the release tag (or the branch
+that the commit lies on). Otherwise, ``master`` is usually a good choice for
+cutting-edge.
+
+Then make repo tool fetch all sources using the command `repo sync`.
 
 .. code-block:: bash
 
