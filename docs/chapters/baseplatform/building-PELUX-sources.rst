@@ -110,7 +110,7 @@ Procedure:
 .. code-block:: bash
 
     export bitbake_image="core-image-pelux-minimal"
-    export yoctoDir="/home/vagrant/pelux_yocto"
+    export yoctoDir="/home/yoctouser/pelux_yocto"
     export manifest="pelux.xml"
     export variant="intel"
 
