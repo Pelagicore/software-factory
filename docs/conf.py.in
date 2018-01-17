@@ -78,8 +78,8 @@ project = u'@PROJECT_NAME@'
 copyright = u'Pelagicore AB'
 author = u'Pelagicore AB'
 
-version = u'@PROJECT_VERSION@'
-release = u"@PROJECT_VERSION@-@REVISION@ @DATE@"
+version = u'@PROJECT_VERSION@-alpha'
+release = u"@PROJECT_VERSION@-alpha-@REVISION@ @DATE@"
 
 language = None
 
