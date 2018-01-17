@@ -104,6 +104,9 @@ Procedure:
 
     vagrant up
 
+.. note:: At this point, it is possible to use ``vagrant ssh -c /bin/bash`` and
+          follow the same instructions as when building locally (but inside the
+          Docker container that Vagrant sets up).
 
 3. Set variables to be used below
 
