@@ -48,7 +48,8 @@ configuration samples from.
 .. note:: The example below get the template configuration for the Intel BSP
           without Qt Automotive Suite (QtAS). Use ``intel-qtauto`` as the last
           part of the path to get QtAS support. The same pattern is used for the
-          Raspberry Pi BSP (``rpi`` and ``rpi-qtauto``).
+          Raspberry Pi BSP (``rpi`` and ``rpi-qtauto``). There is also
+          experimental support for ``qemu-x86-64-nogfx``.
 
 .. code-block:: bash
 

@@ -14,3 +14,7 @@ Raspberry Pi 3
 Insert the SD-card into the Raspberry Pi and boot it up. Make sure to use the
 HDMI output.
 
+QEMU
+----
+
+Booting up a QEMU image is described in :ref:`booting-a-qemu-image`.
