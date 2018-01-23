@@ -74,17 +74,16 @@ Intel NUC are ``.wic`` images, which are complete disk-images. For the Raspberry
 Pi 3, the preferred format is ``.rpi-sdimg`` which can be directly written to
 the SD card.
 
-Building with Vagrant
----------------------
+Building with Docker
+--------------------
 
-When we build internally at Pelagicore in our CI system, we use vagrant.  Please
-note that we only run this setup in a GNU/Linux system at Pelagicore. It should
-still work under Windows or OSX, but we haven't tried it.
+When we build internally at Pelagicore in our CI system, we use Docker, however
+only in a GNU/Linux system. It should still work under Windows or OSX, but we
+haven't tried it.
 
 Dependencies:
 ^^^^^^^^^^^^^
 
-* Vagrant
 * Docker CE
 * Virtualization enabled in BIOS
 
@@ -103,70 +102,29 @@ Procedure:
     git clone --recurse-submodules git@github.com:Pelagicore/pelux-manifests.git
 
 
-2. Start vagrant
+2. Build and run docker image
 
 .. code-block:: bash
 
-    vagrant up
+    docker build -t pelux .
+    docker run -d --name pelux-build -v $(pwd):/docker pelux
 
-.. note:: At this point, it is possible to use ``vagrant ssh -c /bin/bash`` and
-          follow the same instructions as when building locally (but inside the
-          Docker container that Vagrant sets up).
+3. Run inside the docker container
 
-3. Set variables to be used below
+At this point, we recommend using ``docker exec -it pelux-build /bin/bash`` and
+follow the same instructions as when building locally (but inside the Docker
+container).
 
-.. code-block:: bash
+4. Move the built images to the host
 
-    export bitbake_image="core-image-pelux-minimal"
-    export yoctoDir="/home/yoctouser/pelux_yocto"
-    export manifest="pelux.xml"
-    export variant="intel"
-
-4. Do repo init
+The directory where you cloned pelux-manifests is bind-mounted to ``/docker``
+inside the container, so you can simply run:
 
 .. code-block:: bash
 
-    vagrant ssh -c "/vagrant/ci-scripts/do_repo_init ${manifest}"
+    cp <YOCTO_DIR>/build/tmp/deploy/images /docker
 
-
-5. Setup bitbake with correct local.conf and bblayers.conf
-
-.. code-block:: bash
-
-    export templateconf="${yoctoDir}/sources/meta-pelux/conf/variant/${variant}"
-    vagrant ssh -c "/vagrant/vagrant-cookbook/yocto/initialize-bitbake.sh \
-        ${yoctoDir} \
-        ${templateconf}"
-
-
-6. Bitbake the PELUX image
-
-.. code-block:: bash
-
-    vagrant ssh -c "/vagrant/vagrant-cookbook/yocto/build-images.sh \
-        ${yoctoDir} \
-        ${bitbake_image}"
-
-
-7. Move the built images to the host
-
-.. code-block:: bash
-
-    vagrant plugin install vagrant-scp
-    vagrant scp :${yoctoDir}/build/tmp/deploy/images ../images
-
-
-Don't put them into the source folder because then they will be synchronized back
-into the docker instance into the `/vagrant` directory which might take a
-reasonable amount of resources to do.
-
-The container/virtual machine started via vagrant will sync the cloned git
-repository and use the manifests contained in it to set up the build
-environment. This means that the branch/commit currently checked out will
-determine what version is being built. The final step will copy the image
-directory containing the built images to the directory on the host where vagrant
-was started.
-
-For more detailed steps, refer to the scripts in `vagrant-cookbook`.
+For more detailed steps, refer to the ``Jenkinsfile`` in ``pelux-manifests``,
+where we use the Docker integration in Jenkins.
 
 .. _Qt Automotive Suite: https://www.qt.io/qt-automotive-suite/
