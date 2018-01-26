@@ -74,12 +74,12 @@ Intel NUC are ``.wic`` images, which are complete disk-images. For the Raspberry
 Pi 3, the preferred format is ``.rpi-sdimg`` which can be directly written to
 the SD card.
 
-Building with Docker
---------------------
+Building with Vagrant
+---------------------
 
-When we build internally at Pelagicore in our CI system, we use Docker, however
-only in a GNU/Linux system. It should still work under Windows or OSX, but we
-haven't tried it.
+When we build internally at Pelagicore in our CI system, we use Docker with
+Vagrant, however only in a GNU/Linux system. It should still work under Windows
+or OSX, but we haven't tried it.
 
 Dependencies:
 ^^^^^^^^^^^^^
@@ -102,29 +102,28 @@ Procedure:
     git clone --recurse-submodules git@github.com:Pelagicore/pelux-manifests.git
 
 
-2. Build and run docker image
+2. Start Docker through Vagrant
 
 .. code-block:: bash
 
     docker build -t pelux .
     docker run -d --name pelux-build -v $(pwd):/docker pelux
 
-3. Run inside the docker container
+3. Run inside the Docker container
 
-At this point, we recommend using ``docker exec -it pelux-build /bin/bash`` and
-follow the same instructions as when building locally (but inside the Docker
-container).
+At this point, we recommend using ``vagrant ssh`` and follow the same
+instructions as when building locally (but inside the Docker container).
 
 4. Move the built images to the host
 
-The directory where you cloned pelux-manifests is bind-mounted to ``/docker``
+The directory where you cloned pelux-manifests is bind-mounted to ``/vagrant``
 inside the container, so you can simply run:
 
 .. code-block:: bash
 
-    cp <YOCTO_DIR>/build/tmp/deploy/images /docker
+    cp <YOCTO_DIR>/build/tmp/deploy/images /vagrant
 
 For more detailed steps, refer to the ``Jenkinsfile`` in ``pelux-manifests``,
-where we use the Docker integration in Jenkins.
+where we have automated our building of PELUX.
 
 .. _Qt Automotive Suite: https://www.qt.io/qt-automotive-suite/
