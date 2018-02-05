@@ -41,6 +41,32 @@ Then make repo tool fetch all sources using the command `repo sync`.
     repo init -u https://github.com/Pelagicore/pelux-manifests.git -b <branch>
     repo sync
 
+
+Available images
+^^^^^^^^^^^^^^^^
+
+.. This is to get red and green colours for the symbols below
+.. role:: available
+.. role:: unavailable
+.. raw:: html
+
+    <!-- The roles we defined in rst will translate to style sheet classes -->
+    <style> .available {color:green} .unavailable {color:red} </style>
+
++-------------------------------------+------------------+----------------+------------------+----------------+
+|                                     |      Variant name                                                     |
++          Image name                 +------------------+----------------+------------------+----------------+
+|                                     | intel            | intel-qtauto   | rpi              | rpi-qtauto     |
++=====================================+==================+================+==================+================+
+| core-image-pelux-minimal            | :available:`✔`   | :available:`✔` | :available:`✔`   | :available:`✔` |
++-------------------------------------+------------------+----------------+------------------+----------------+
+| core-image-pelux-minimal-dev        | :available:`✔`   | :available:`✔` | :available:`✔`   | :available:`✔` |
++-------------------------------------+------------------+----------------+------------------+----------------+
+| core-image-pelux-qtauto-neptune     | :unavailable:`✘` | :available:`✔` | :unavailable:`✘` | :available:`✔` |
++-------------------------------------+------------------+----------------+------------------+----------------+
+| core-image-pelux-qtauto-neptune-dev | :unavailable:`✘` | :available:`✔` | :unavailable:`✘` | :available:`✔` |
++-------------------------------------+------------------+----------------+------------------+----------------+
+
 When done fetching the sources, create a build directory and set up bitbake.
 ``TEMPLATECONF`` tells the ``oe-init-build-env`` script which path to fetch
 configuration samples from.
@@ -57,6 +83,9 @@ configuration samples from.
 
 The script will create configs if there are no configs present, a message about
 created ``conf/local.conf`` and ``conf/bblayers.conf`` files is normal.
+
+Building the image
+^^^^^^^^^^^^^^^^^^
 
 Finally, build the desired image. See the variables description above for
 information on the different images.
