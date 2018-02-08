@@ -25,6 +25,7 @@ THISDIR='@CMAKE_CURRENT_SOURCE_DIR@'
 # Include the blueprint path, and include the substitutions from the blueprint
 sys.path.append(os.path.abspath(os.path.join(THISDIR, 'swf-blueprint/docs/python_modules')))
 from substitutions import subst as blueprint
+from enchantfilters import SWFFilters
 
 # -- General configuration ------------------------------------------------
 
@@ -43,6 +44,7 @@ extensions = [
     'sphinxcontrib.blockdiag',
     'sphinxcontrib.seqdiag',
     'sphinxcontrib.actdiag',
+    'sphinxcontrib.spelling',
     'sphinxexts.taglist'
 ]
 
@@ -82,6 +84,15 @@ version = u'@PROJECT_VERSION@-alpha'
 release = u"@PROJECT_VERSION@-alpha-@REVISION@ @DATE@"
 
 language = None
+
+# Spelling options
+spelling_lang='en_US'
+spelling_word_list_filename='@BINARY_BUILD_DIR@/@WORDLIST_FILE@'
+selling_show_suggestions=True
+
+# The spell-checker does not recognize the git hash in the revision string
+# on the front page automatically, so we wrote a custom filter for that.
+spelling_filters=[SWFFilters.VersionStringFilter]
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.

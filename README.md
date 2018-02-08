@@ -14,18 +14,19 @@ Maintainer: Joakim Gross <joakim.gross@pelagicore.com>
 * sphinxcontrib-blockdiag
 * sphinxcontrib-actdiag
 * sphinxcontrib-manpage
+* sphinxcontrib-spelling
 * sphinx\_rtd\_theme
 * texlive-latex-base (when building PDF)
 * texlive-latex-extra (when building PDF)
 * texlive-latex-recommended (when building PDF)
-* aspell-en (when invoking a spell check)
 
 ###  Install build dependencies on Debian
 
 ``` bash
-sudo apt-get install cmake python-pip aspell-en
+sudo apt-get install cmake python-pip
 sudo pip install sphinxcontrib-seqdiag sphinxcontrib-blockdiag \
-              sphinxcontrib-actdiag sphinxcontrib-manpage sphinx_rtd_theme
+    sphinxcontrib-actdiag sphinxcontrib-manpage sphinxcontrib-spelling \
+    sphinx_rtd_theme
 ```
 
 
@@ -33,7 +34,6 @@ sudo pip install sphinxcontrib-seqdiag sphinxcontrib-blockdiag \
 The project uses cmake to configure the build. Supported options are:
 
 * `ENABLE_PDF` - Enables building the docs in PDF format. Set to OFF by default
-* `PERFORM_SPELL_CHECK` - Performs a spell check on files. Set to ON by default
 
 Check out the swf-blueprint submodule like so:
 ``` bash
@@ -51,35 +51,38 @@ After a successfull build you can find the documentation in `build/docs/html/`
 if you open the `index.html` in your browser you will see the entry point.
 
 ### Understanding Spell Check
-A spell check is performed during the build step by default. It uses built-in
-language specific dictionaries and project specific dictionaries (aspell.en.pws)
-to verify the spellings and causes the build to fail in case of any typos.
+A spell check is performed during the build step by default. It uses in-built
+language specific dictionaries and project specific dictionaries
+(spelling_wordlist.txt) to verify the spellings and causes the build to fail in
+case of any typos.
 
 The project, which uses this blueprint, should have its own custom dictionary,
-similar to the one in blueprint (aspell.en.pws). Also a link to the
-check_spelling.sh script in the repository should be created. The symlink to
-check_spelling.sh and the project specific dictionary should be kept in the same
-directory for the script to run correctly.
+similar to the one in blueprint (spelling_wordlist.txt). Currently, the
+sphinxcontrib-spelling module does not support multiple wordlists, so one should
+concatenate all wordlists to one specific list. In CMake, that can be done as
+follows:
 
-To build without spell check, configure cmake as below:
+    add_custom_target(spelling
+        find "${CMAKE_CURRENT_SOURCE_DIR}" -iname "${WORDLIST_FILE}" -type f | xargs cat > ${BINARY_BUILD_DIR}/${WORDLIST_FILE}
+        COMMAND ${SPHINX_EXECUTABLE}
+            -W -b spelling
+            -c "${BINARY_BUILD_DIR}"
+            -d "${SPHINX_CACHE_DIR}"
+            "${CMAKE_CURRENT_SOURCE_DIR}"
+            "${CMAKE_BINARY_DIR}/spelling"
+        COMMENT "Spell-checking documentation with Sphinx"
 
-    cmake -H. -Bbuild -DPERFORM_SPELL_CHECK=OFF
+`WORDLIST_FILE` is added to `conf.py` as the source for spelling, which the
+sphinx spelling module then picks up.
 
-To invoke the spell check utility directly, run the command below:
+The spell checker is added as a custom target, so to run it manually, simply
+type (after running cmake):
 
-    ./check_spelling.sh
+    make spelling
 
-The spell checker has various modes and options, which can be seen by:
+To build the docs without checking the spelling, type:
 
-    ./check_spelling.sh --help
-
-New words can be added to the dictionary by the script interface itself. Run
-the script as below to view all typos and add one or all words:
-
-    ./check_spelling.sh --all
-
-The dictionary can also be modified manually, by adding words to the end of the
-aspell.en.pws file.
+    make sphinx-html
 
 # License and Copyright
 Copyright (C) Pelagicore AB 2017

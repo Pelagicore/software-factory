@@ -30,7 +30,7 @@ pipeline {
         stage('Configure') {
             steps {
                 script {
-                    String buildParams = "-DENABLE_PDF=OFF -DPERFORM_SPELL_CHECK=ON "
+                    String buildParams = "-DENABLE_PDF=OFF"
                     sh "rm -fr build"
                     sh "cmake -H. -Bbuild ${buildParams}"
                 }
