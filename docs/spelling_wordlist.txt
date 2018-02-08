@@ -1,4 +1,3 @@
-personal_ws-1.1 en 119 
 runtime
 API
 sde
@@ -132,3 +131,6 @@ SHA
 nogfx
 UCM
 middleware
+USB
+fallback
+tarball

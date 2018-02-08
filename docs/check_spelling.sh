@@ -1,1 +1,0 @@
-swf-blueprint/docs/check_spelling.sh
