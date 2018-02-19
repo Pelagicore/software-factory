@@ -62,7 +62,7 @@ def shouldWeRun = { String shaFile ->
 }
 
 // We run this on any node that has Sphinx and web server access
-node('Sphinx && WWW') {
+node('WWW') {
 
     // For scope reasons we define it here
     String[] buildList = []
