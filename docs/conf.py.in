@@ -87,7 +87,7 @@ language = None
 
 # Spelling options
 spelling_lang='en_US'
-spelling_word_list_filename='@BINARY_BUILD_DIR@/@WORDLIST_FILE@'
+spelling_word_list_filename=['spelling_wordlist.txt','swf-blueprint/docs/spelling_wordlist.txt']
 selling_show_suggestions=True
 
 # The spell-checker does not recognize the git hash in the revision string

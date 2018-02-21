@@ -57,23 +57,8 @@ language specific dictionaries and project specific dictionaries
 case of any typos.
 
 The project, which uses this blueprint, should have its own custom dictionary,
-similar to the one in blueprint (spelling_wordlist.txt). Currently, the
-sphinxcontrib-spelling module does not support multiple wordlists, so one should
-concatenate all wordlists to one specific list. In CMake, that can be done as
-follows:
-
-    add_custom_target(spelling
-        find "${CMAKE_CURRENT_SOURCE_DIR}" -iname "${WORDLIST_FILE}" -type f | xargs cat > ${BINARY_BUILD_DIR}/${WORDLIST_FILE}
-        COMMAND ${SPHINX_EXECUTABLE}
-            -W -b spelling
-            -c "${BINARY_BUILD_DIR}"
-            -d "${SPHINX_CACHE_DIR}"
-            "${CMAKE_CURRENT_SOURCE_DIR}"
-            "${CMAKE_BINARY_DIR}/spelling"
-        COMMENT "Spell-checking documentation with Sphinx"
-
-`WORDLIST_FILE` is added to `conf.py` as the source for spelling, which the
-sphinx spelling module then picks up.
+similar to the one in blueprint (spelling_wordlist.txt). One can supply
+multiple word lists to the spell-checker plugin, see `conf.py.in`
 
 The spell checker is added as a custom target, so to run it manually, simply
 type (after running cmake):

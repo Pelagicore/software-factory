@@ -42,15 +42,13 @@ set(SPHINX_HTML_DIR "${CMAKE_CURRENT_BINARY_DIR}/html")
 # PDF output directory
 set(SPHINX_PDF_DIR "${CMAKE_CURRENT_BINARY_DIR}/pdflatex")
 
-set(WORDLIST_FILE "spelling_wordlist.txt")
 configure_file(
     "${CMAKE_CURRENT_SOURCE_DIR}/conf.py.in"
     "${BINARY_BUILD_DIR}/conf.py"
     @ONLY)
 
 add_custom_target(spelling
-    find "${CMAKE_CURRENT_SOURCE_DIR}" -iname "${WORDLIST_FILE}" -type f | xargs cat > ${BINARY_BUILD_DIR}/${WORDLIST_FILE}
-    COMMAND ${SPHINX_EXECUTABLE}
+    ${SPHINX_EXECUTABLE}
         -W -b spelling
         -c "${BINARY_BUILD_DIR}"
         -d "${SPHINX_CACHE_DIR}"
