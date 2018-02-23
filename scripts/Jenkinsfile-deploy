@@ -61,7 +61,7 @@ def shouldWeRun = { String shaFile ->
     return params.FORCE_DEPLOY || shouldRun != 0
 }
 
-node('WWW' && !master) {
+node('WWW' && (!'master')) {
 
     // For scope reasons we define it here
     String[] buildList = []
