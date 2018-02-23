@@ -61,8 +61,7 @@ def shouldWeRun = { String shaFile ->
     return params.FORCE_DEPLOY || shouldRun != 0
 }
 
-// We run this on any node that has Sphinx and web server access
-node('WWW') {
+node('WWW' && !master) {
 
     // For scope reasons we define it here
     String[] buildList = []
