@@ -1,5 +1,5 @@
 
-.. include:: ../../swf-blueprint/docs/articles/baseplatform/writing-image.rst
+.. include:: ../../swf-blueprint/docs/articles/baseplatform/deploying-image.rst
 
 Image names for PELUX targets
 -----------------------------
