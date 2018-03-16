@@ -1,3 +1,7 @@
+:orphan:
+
+.. _building-pelux-sources:
+
 Building PELUX sources
 ======================
 
