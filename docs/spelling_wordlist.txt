@@ -136,3 +136,15 @@ fallback
 tarball
 packagegroup
 packagegroups
+rollout
+swu
+sw
+libconfig
+app
+swupdate
+hawkbit
+beaglebone
+wandboard
+cmdline
+offboard
+Surricata
