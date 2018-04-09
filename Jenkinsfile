@@ -8,7 +8,7 @@
 
 pipeline {
     agent {
-        node { label 'Sphinx' }
+        dockerfile true
     }
 
     stages {
