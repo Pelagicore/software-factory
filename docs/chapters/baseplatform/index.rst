@@ -19,3 +19,4 @@ PELUX as a platform is compiled from a lot of different projects with help of Yo
    creating-a-manifest
    ../../swf-blueprint/docs/articles/baseplatform/creating-a-new-layer
    ../../swf-blueprint/docs/articles/baseplatform/variant-concept-in-yocto
+   replacing-packagegroups
