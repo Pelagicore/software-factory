@@ -134,3 +134,5 @@ middleware
 USB
 fallback
 tarball
+packagegroup
+packagegroups
