@@ -5,12 +5,14 @@ RUN apt-get update && apt-get install -y \
 	git \
 	locales \
 	python3-pip \
-	enchant
+	enchant \
+	plantuml
 
 RUN pip3 install \
 	sphinx_rtd_theme \
 	sphinxcontrib-actdiag \
 	sphinxcontrib-blockdiag \
+	sphinxcontrib-plantuml \
 	sphinxcontrib-manpage \
 	sphinxcontrib-seqdiag \
 	sphinxcontrib-spelling
