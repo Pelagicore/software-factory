@@ -10,8 +10,10 @@ Maintainer: Joakim Gross <joakim.gross@pelagicore.com>
 ## Dependencies
 * cmake
 * Sphinx
+* plantuml
 * sphinxcontrib-seqdiag
 * sphinxcontrib-blockdiag
+* sphinxcontrib-plantuml
 * sphinxcontrib-actdiag
 * sphinxcontrib-manpage
 * sphinxcontrib-spelling
@@ -23,10 +25,10 @@ Maintainer: Joakim Gross <joakim.gross@pelagicore.com>
 ###  Install build dependencies on Debian
 
 ``` bash
-sudo apt-get install cmake python-pip
+sudo apt-get install cmake python-pip plantuml
 sudo pip install sphinxcontrib-seqdiag sphinxcontrib-blockdiag \
     sphinxcontrib-actdiag sphinxcontrib-manpage sphinxcontrib-spelling \
-    sphinx_rtd_theme
+    sphinxcontrib-plantuml sphinx_rtd_theme
 ```
 
 

@@ -42,6 +42,7 @@ extensions = [
     'sphinx.ext.ifconfig',
     'sphinxcontrib.manpage',
     'sphinxcontrib.blockdiag',
+    'sphinxcontrib.plantuml',
     'sphinxcontrib.seqdiag',
     'sphinxcontrib.actdiag',
     'sphinxcontrib.spelling',
