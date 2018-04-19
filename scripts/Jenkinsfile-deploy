@@ -67,7 +67,7 @@ def shouldWeRun = { String shaFile ->
     }
 }
 
-node('WWW' && '!master') {
+node('WWW && !master') {
     // Artifact with sha ids
     String shaFile = "shaids.txt"
     // For scope reasons we define it here
