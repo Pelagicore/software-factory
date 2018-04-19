@@ -53,12 +53,18 @@ def branchesAndTags = {
 // file from the latest successful build to check this.
 def shouldWeRun = { String shaFile ->
     // Check the list of sha IDs from last successful build with the current one
-    copyArtifacts projectName: '${JOB_NAME}', target: "latestBuild", optional: true, selector: lastSuccessful()
-    int shouldRun = sh returnStatus: true, script: "diff -q latestBuild/${shaFile} ${shaFile}"
-    sh "rm -rf latestBuild"
-
-    // Run if forced to or if there was a diff
-    return params.FORCE_DEPLOY || shouldRun != 0
+    try {
+        copyArtifacts projectName: '${JOB_NAME}', target: "latestBuild", optional: true, selector: lastSuccessful()
+        int shouldRun = sh returnStatus: true, script: "diff -q latestBuild/${shaFile} ${shaFile}"
+        sh "rm -rf latestBuild"
+        return params.FORCE_DEPLOY || shouldRun != 0
+    } catch (err) {
+        echo "Caught error: ${err}"
+        // Exception will be thrown if copyArtifact fails, which means we should
+        // definitely deploy!
+        echo "CopyArtifact failed, forcing a deploy"
+        return true
+    }
 }
 
 node('WWW' && '!master') {
