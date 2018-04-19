@@ -62,16 +62,10 @@ def shouldWeRun = { String shaFile ->
 }
 
 node('WWW' && '!master') {
-
-    // For scope reasons we define it here
-    String[] buildList = []
-
-    // We copy everything to a staging directory to avoid 404 while the job is running
-    String stagingDirectory = env.SWF_STAGING_DIR?: "/tmp/software-factory-staging/"
-    String swfDirectory = env.SWF_DEPLOY_DIR?: "/var/www/software-factory/"
-
     // Artifact with sha ids
     String shaFile = "shaids.txt"
+    // For scope reasons we define it here
+    String[] buildList = []
 
     stage('Checkout') {
         // Make sure we get a clean build
@@ -97,14 +91,20 @@ node('WWW' && '!master') {
         return
     }
 
+
+    // We copy everything to a staging directory to avoid 404 while the job is running
+    String stagingDirectory = env.SWF_STAGING_DIR?: "/tmp/software-factory-staging/"
+    String swfDirectory = env.SWF_DEPLOY_DIR?: "/var/www/software-factory/"
+
     stage('Setup staging') {
         // Remove any traces of an old staging directory, setup a clean one
         sh "rm -rf ${stagingDirectory}"
         sh "mkdir ${stagingDirectory}"
     }
 
-    stage('Build') {
-        for (build in buildList) {
+
+    for (build in buildList) {
+        stage("Build ${build}") {
             // How do we build for each tag/branch
             sh "git checkout ${build}"
             sh "git submodule update"
@@ -112,30 +112,38 @@ node('WWW' && '!master') {
             // Since we want to create directories from the names, we replace
             // forward slashes with forward dashes
             String buildName = build.replace("/","-")
-            String buildDir = "build-${buildName}"
-            String buildParams = "-DENABLE_PDF=OFF "
 
-            sh "rm -rf ${buildDir}"
-            sh "cmake -H. -B${buildDir} ${buildParams}"
-            sh "cd ${buildDir} && make"
+            // We do the actual building inside a Docker container, just like we
+            // would when doing the build job.
+            def swfImage = docker.build("swfimage:${buildName}")
+            swfImage.inside("-v${stagingDirectory}:${stagingDirectory}") {
+                String buildDir = "build-${buildName}"
+                String buildParams = "-DENABLE_PDF=OFF "
 
-            // Name it appropriately
-            sh "mv ${buildDir}/docs/html/ ${buildName}"
+                sh "rm -rf ${buildDir}"
+                sh "cmake -H. -B${buildDir} ${buildParams}"
+                sh "cd ${buildDir} && make"
 
-            // Copy to staging area
-            sh "cp -r ${buildName} ${stagingDirectory}"
+                // Name it appropriately
+                sh "mv ${buildDir}/docs/html/ ${buildName}"
 
-            // Delete the build dir
-            sh "rm -rf ${buildDir}"
+                // Copy to staging area
+                sh "cp -r ${buildName} ${stagingDirectory}"
+
+                // Delete the build dir
+                sh "rm -rf ${buildDir}"
+            }
         }
 
-        // Create some convenience symlinks for master/latest/current
-        sh "cd ${stagingDirectory} && ln -s master latest && ln -s master current"
     }
 
     stage('Deploy') {
+        // Create some convenience symlinks for master/latest/current
+        sh "cd ${stagingDirectory} && ln -s master latest && ln -s master current"
+
         // Remove old SWF directory
         sh "rm -rf ${swfDirectory}"
+
         // Move staging directory to SWF directory
         sh "mv ${stagingDirectory} ${swfDirectory}"
     }
