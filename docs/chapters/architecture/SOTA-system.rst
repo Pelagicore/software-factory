@@ -426,6 +426,28 @@ not currently in use.
 
 .. _Vertical configurations page: http://pelux.io/software-factory/master/swf-blueprint/docs/articles/architecture/arch-vertical-configurations.html#update-management
 
+Bootloader requirements
+^^^^^^^^^^^^^^^^^^^^^^^
+
+For atomic partition switching in an A+B context, the SOTA Client needs to tell
+the bootloader which partition should be booted. SWUpdate has support for a
+couple of bootloaders at a fairly low-level. It allows artifacts, when they are
+being applied, to set boot environment variables.
+
+For instance, GRUB and U-Boot are supported and sw-description files can set
+a rootfs partition variable to a specific number that reflects the partition
+which should be booted. It is then possible to include a custom script in the
+U-Boot or GRUB boot process that reads this environment variable and boots the
+kernel with a corresponding "`root=/dev/...`" command line.
+
+If a new bootloader is to be used with PELUX, it can be supported in SWUpdate
+by following the example of the `"none" bootloader plugin`_ which requires
+four functions: `env_set`, `env_unset`, `env_get` and `apply_list`.
+Hardware-specific artifacts can then use that plugin to set a variable and
+the bootloader can use that variable to select a suitable kernel command line.
+
+.. _"none" bootloader plugin: https://github.com/sbabic/swupdate/blob/master/bootloader/none.c
+
 Quality requirements
 --------------------
 
