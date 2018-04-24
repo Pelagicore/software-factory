@@ -148,3 +148,5 @@ wandboard
 cmdline
 offboard
 Surricata
+plugin
+bootloaders
