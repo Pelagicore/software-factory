@@ -401,6 +401,31 @@ duplication. However, it has been decided that the meta-swupdate-boards
 contained too much superfluous code and the few relevant parts of that layer
 have been directly integrated in meta-pelux.
 
+Partition layout
+^^^^^^^^^^^^^^^^
+
+As stated in the `Vertical configurations page`_, in order to achieve some of
+its requirements, a SOTA client potentially needs to impact the partitioning of
+a system. For instance, different schemes are possible: A+B, normal+recovery or
+in-place upgrades.
+
+The chosen solution, SWUpdate, is a generic framework that can be used to
+implement all of those update strategies. It has been decided that using an A/B
+partitioning should be the way to go and this is the partitions scheme that is
+used in the provided reference sw-description files.
+
+For convenience, a freshly built PELUX image consists of a single rootfs that
+can be flashed on a SD Card. When an update is applied, its artifact comes with
+a repartitioning script that checks whether a "Rootfs B" is available. On the
+first application, such a partition is not available, so the script will
+repartition the card to create a second partition and will flash the new rootfs
+on this new partition.
+
+After this, new updates will only need to be applied on the Rootfs that is
+not currently in use.
+
+.. _Vertical configurations page: http://pelux.io/software-factory/master/swf-blueprint/docs/articles/architecture/arch-vertical-configurations.html#update-management
+
 Quality requirements
 --------------------
 
