@@ -490,7 +490,7 @@ on an IP network:
 
 - A development machine running a standard Linux distribution. We will assume
   that this machine has the *192.168.3.11* IP address. This machine must have
-  Java 1.8 and Maven installed.
+  Java 1.8, Maven and rabbitmq-server installed.
 - A raspberrypi3 running PELUX. 
 
 Compiling SWUpdate artifacts
