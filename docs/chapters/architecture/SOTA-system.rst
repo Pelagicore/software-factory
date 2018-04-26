@@ -617,13 +617,66 @@ see the status of your rollout campaign changed.
 Going further
 ^^^^^^^^^^^^^
 
-Those instructions don't use a database to store artifacts. This means that
-every time Hawkbit will be restarted, its rollout campaigns will be lost. This
-is handy for a development environment but unsustainable for a real world
-scenario. Please refer to `the Hawkbit documentation`_ for details on how to set it
-up with a MariaDB database.
+Persistent storage
+""""""""""""""""""
 
-.. _the Hawkbit documentation: https://www.eclipse.org/hawkbit/documentation/guide/runhawkbit.html
+The above instructions don't use a database to store artifacts and metadata.
+This means that every time Hawkbit will be restarted, its rollout campaigns
+will be lost. This is handy for a development environment but unsustainable for
+a real world scenario.
+
+You can set up a MariaDB server to keep data between two executions of Hawkbit.
+Start by installing the `mariadb-server` package from your distribution's
+repositories. Then, make sure the server is running
+
+.. code-block:: bash
+
+    $ systemctl start mariadb-server
+
+Once MariaDB is running, you need to create a database for Hawkbit. For the
+rest of the instructions, we will use the default MariaDB user whose username
+is *root* and password is empty but you can create a new user and adapt the
+instructions accordingly.
+
+.. code-block:: bash
+
+    $ mysql -uroot -p
+
+Then create a database with
+
+.. code-block:: sql
+
+    CREATE DATABASE hawkbit;
+
+You now need to configure Maven to build a MariaDB backend for Java DB. Open
+*hawkbit-runtime/hawkbit-update-server/pom.xml* and add the following block
+inside the **dependencies** element:
+
+.. code-block:: xml
+
+    <dependency>
+        <groupId>org.mariadb.jdbc</groupId>
+        <artifactId>mariadb-java-client</artifactId>
+        <scope>compile</scope>
+    </dependency>
+
+Hawkbit must be configured to connect to the database you created earlier.
+Append the following configuration values at the end of
+*hawkbit-runtime/hawkbit-update-server/src/main/resources/application.properties*
+
+.. code-block:: INI
+
+    spring.jpa.database=MYSQL
+    spring.datasource.url=jdbc:mysql://localhost:3306/hawkbit
+    spring.datasource.username=root
+    spring.datasource.password=
+    spring.datasource.driverClassName=org.mariadb.jdbc.Driver
+
+Finally, run a new build with ``mvn clean install`` and restart Hawkbit. Your
+data should now be stored in the database.
+
+Device authentication
+"""""""""""""""""""""
 
 Hawkbit offers mechanisms for device authentication. This is a useful security
 feature to verify the identity of a target. Details on how to set this up in
