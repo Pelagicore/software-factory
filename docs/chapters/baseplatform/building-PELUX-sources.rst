@@ -17,7 +17,9 @@ NeptuneUI demo application.
 A note on development images
 ----------------------------
 Both PELUX images are available as `-dev` variants, which include some extra
-development and debugging tools.
+development and debugging tools. For some platforms, those images are also
+available as `-update` to generate update artifacts for the :ref:`SOTA
+System<SOTA-system>`.
 
 It should be noted that the regular image is *not* a production ready image. For
 a production project, it is recommended to create an image that can be based on
@@ -57,19 +59,27 @@ Available images
     <!-- The roles we defined in rst will translate to style sheet classes -->
     <style> .available {color:green} .unavailable {color:red} </style>
 
-+-------------------------------------+------------------+----------------+------------------+----------------+
-|                                     |      Variant name                                                     |
-+          Image name                 +------------------+----------------+------------------+----------------+
-|                                     | intel            | intel-qtauto   | rpi              | rpi-qtauto     |
-+=====================================+==================+================+==================+================+
-| core-image-pelux-minimal            | :available:`✔`   | :available:`✔` | :available:`✔`   | :available:`✔` |
-+-------------------------------------+------------------+----------------+------------------+----------------+
-| core-image-pelux-minimal-dev        | :available:`✔`   | :available:`✔` | :available:`✔`   | :available:`✔` |
-+-------------------------------------+------------------+----------------+------------------+----------------+
-| core-image-pelux-qtauto-neptune     | :unavailable:`✘` | :available:`✔` | :unavailable:`✘` | :available:`✔` |
-+-------------------------------------+------------------+----------------+------------------+----------------+
-| core-image-pelux-qtauto-neptune-dev | :unavailable:`✘` | :available:`✔` | :unavailable:`✘` | :available:`✔` |
-+-------------------------------------+------------------+----------------+------------------+----------------+
++--------------------------------------------+------------------+------------------+------------------+----------------+
+|                                            |      Variant name                                                       |
++          Image name                        +------------------+------------------+------------------+----------------+
+|                                            | intel            | intel-qtauto     | rpi              | rpi-qtauto     |
++============================================+==================+==================+==================+================+
+| core-image-pelux-minimal                   | :available:`✔`   | :available:`✔`   | :available:`✔`   | :available:`✔` |
++--------------------------------------------+------------------+------------------+------------------+----------------+
+| core-image-pelux-minimal-dev               | :available:`✔`   | :available:`✔`   | :available:`✔`   | :available:`✔` |
++--------------------------------------------+------------------+------------------+------------------+----------------+
+| core-image-pelux-qtauto-neptune            | :unavailable:`✘` | :available:`✔`   | :unavailable:`✘` | :available:`✔` |
++--------------------------------------------+------------------+------------------+------------------+----------------+
+| core-image-pelux-qtauto-neptune-dev        | :unavailable:`✘` | :unavailable:`✘` | :unavailable:`✘` | :available:`✔` |
++--------------------------------------------+------------------+------------------+------------------+----------------+
+| core-image-pelux-minimal-update            | :unavailable:`✘` | :unavailable:`✘` | :available:`✔`   | :available:`✔` |
++--------------------------------------------+------------------+------------------+------------------+----------------+
+| core-image-pelux-minimal-dev-update        | :unavailable:`✘` | :unavailable:`✘` | :available:`✔`   | :available:`✔` |
++--------------------------------------------+------------------+------------------+------------------+----------------+
+| core-image-pelux-qtauto-neptune-update     | :unavailable:`✘` | :unavailable:`✘` | :unavailable:`✘` | :available:`✔` |
++--------------------------------------------+------------------+------------------+------------------+----------------+
+| core-image-pelux-qtauto-neptune-dev-update | :unavailable:`✘` | :unavailable:`✘` | :unavailable:`✘` | :available:`✔` |
++--------------------------------------------+------------------+------------------+------------------+----------------+
 
 When done fetching the sources, create a build directory and set up bitbake.
 ``TEMPLATECONF`` tells the ``oe-init-build-env`` script which path to fetch
