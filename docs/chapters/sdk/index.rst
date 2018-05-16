@@ -14,4 +14,5 @@ specific target hardware platform.
     ../../swf-blueprint/docs/articles/sdk/installing-the-sdk.rst
     ../../swf-blueprint/docs/articles/sdk/using-the-sdk-to-crosscompile.rst
     ../../swf-blueprint/docs/articles/sdk/run-binary-on-target.rst
+    ../../swf-blueprint/docs/articles/sdk/configure-qtcreator.rst
     ../../swf-blueprint/docs/articles/sdk/read-system-logs.rst
