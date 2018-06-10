@@ -490,14 +490,18 @@ on an IP network:
 
 - A development machine running a standard Linux distribution. We will assume
   that this machine has the *192.168.3.11* IP address. This machine must have
-  Java 1.8, Maven and rabbitmq-server installed.
-- A raspberrypi3 running PELUX. 
+  Java 8 (Both OpenJDK and Oracle Java 1.8 work), Maven and rabbitmq-server
+  installed.
+- A raspberrypi3 running PELUX. Other platforms should have similar
+  configurations in the future but the Raspberry Pi is currently the only
+  supported platform.
 
 Compiling SWUpdate artifacts
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 You can generate update artifacts of PELUX from your Yocto build directory
-using bitbake:
+using bitbake. For example a .swu file for *core-image-pelux-minimal* can be
+generated using:
 
 .. code-block:: bash
 
@@ -505,6 +509,8 @@ using bitbake:
 
 The resulting file can then be found at:
 *build/tmp/deploy/images/raspberrypi3/core-image-pelux-minimal-update-raspberrypi3.swu*
+
+More details can be found in the :ref:`building-PELUX-sources` page.
 
 Hawkbit installation
 ^^^^^^^^^^^^^^^^^^^^
@@ -564,6 +570,19 @@ the machine running PELUX to let Hawkbit know our device exists.
 
     $ swupdate -H raspberrypi3:1.0 -e stable,alt -f /etc/swupdate.cfg -l 5 -u '-t DEFAULT -u http://192.168.3.11:8080 -i DeviceID'
 
+.. note:: - The `H` option specifies the hardware name and revision.
+          - The `e` option selects the software and mode that should be used
+            (for instance: alt installs on the partition B, main installs on
+            the partition A).
+          - The `f` option points to the SWUpdate config file.
+          - The `l` option chooses a verbose log level.
+          - The `u` option is followed by options dedicated to the Surricata
+            mode.
+          - The `t` option selects the tenant ID of the device.
+          - The second `u` option points to the Hawkbit instance you want to
+            download your artifacts from.
+          - The `i` option represents the id of the device.
+
 You should now see a new target appearing in the left side of the Deployment
 tab of Hawkbit with the name you chose as *"DeviceID"* in the above command.
 
@@ -579,6 +598,9 @@ Upload
 - Use the "Upload file" button to select the .swu file you generated earlier
   and then press the "Process" button to validate the upload
 
+`Note:`: Hawkbit offers "Management APIs" that can potentially automatize those
+steps.
+
 Distribution Management
 """""""""""""""""""""""
 
@@ -586,6 +608,7 @@ Distribution Management
 - Create a Distribution of type "OS with app(s)", named PELUX of version 1.0
 - Drag and drop the Rootfs on the right pane onto the PELUX distribution on the
   left pane
+- Click the actions button and apply the changes
 
 Target Filters
 """"""""""""""
@@ -608,7 +631,7 @@ Applying the update
 
 At this point, you can either wait for a while, so that SWUpdate polls for
 updates and finds the new deployment campaign or kill and restart SWUpdate.
-You should find detailed informations on the installation process in the
+You should find detailed information on the installation process in the
 standard output of SWUpdate.
 
 When the update is applied, you can also check the Hawkbit Management UI and
