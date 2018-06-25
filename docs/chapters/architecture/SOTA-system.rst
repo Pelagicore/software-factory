@@ -492,9 +492,9 @@ on an IP network:
   that this machine has the *192.168.3.11* IP address. This machine must have
   Java 8 (Both OpenJDK and Oracle Java 1.8 work), Maven and rabbitmq-server
   installed.
-- A raspberrypi3 running PELUX. Other platforms should have similar
-  configurations in the future but the Raspberry Pi is currently the only
-  supported platform.
+- A raspberrypi3 or an Intel NUC (intel-corei7-64) running PELUX. Other
+  platforms should have similar configurations in the future but the Raspberry Pi
+  and Intel NUC are currently the only supported platforms.
 
 Compiling SWUpdate artifacts
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -507,8 +507,12 @@ generated using:
 
     $ bitbake core-image-pelux-minimal-update
 
-The resulting file can then be found at:
+The resulting file can then be found at one of the following locations depending on the
+build target:
+
 *build/tmp/deploy/images/raspberrypi3/core-image-pelux-minimal-update-raspberrypi3.swu*
+
+*build/tmp/deploy/images/intel-corei7-64/core-image-pelux-minimal-update-intel-corei7-64.swu*
 
 More details can be found in the :ref:`building-PELUX-sources` page.
 
@@ -568,9 +572,10 @@ the machine running PELUX to let Hawkbit know our device exists.
 
 .. code-block:: bash
 
-    $ swupdate -H raspberrypi3:1.0 -e stable,alt -f /etc/swupdate.cfg -l 5 -u '-t DEFAULT -u http://192.168.3.11:8080 -i DeviceID'
+    $ swupdate -H <hardware name>:1.0 -e stable,alt -f /etc/swupdate.cfg -l 5 -u '-t DEFAULT -u http://192.168.3.11:8080 -i DeviceID'
 
-.. note:: - The `H` option specifies the hardware name and revision.
+.. note:: - The `H` option specifies the hardware name and revision. The
+            supported hardware names are **raspberrypi3** and **intel-corei7-64** 
           - The `e` option selects the software and mode that should be used
             (for instance: alt installs on the partition B, main installs on
             the partition A).
