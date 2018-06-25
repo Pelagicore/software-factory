@@ -416,9 +416,9 @@ used in the provided reference sw-description files.
 
 For convenience, a freshly built PELUX image consists of a single rootfs that
 can be flashed on a SD Card. When an update is applied, its artifact comes with
-a repartitioning script that checks whether a "Rootfs B" is available. On the
+a re-partitioning script that checks whether a "Rootfs B" is available. On the
 first application, such a partition is not available, so the script will
-repartition the card to create a second partition and will flash the new rootfs
+re-partition the card to create a second partition and will flash the new rootfs
 on this new partition.
 
 After this, new updates will only need to be applied on the Rootfs that is
