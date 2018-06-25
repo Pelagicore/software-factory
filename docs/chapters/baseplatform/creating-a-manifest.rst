@@ -75,6 +75,6 @@ Below follows general recommendations for modifications of common files.
 
 .. [#repotool] https://source.android.com/source/using-repo
 .. [#pelux-manifests] https://github.com/Pelagicore/pelux-manifests
-.. [#vagrant] https://source.android.com/source/using-repo
-.. [#jenkins] https://www.vagrantup.com/
+.. [#vagrant] https://www.vagrantup.com/
+.. [#jenkins] https://www.jenkins.io/
 .. [#jenkinspipeline] https://jenkins.io/doc/book/pipeline/
