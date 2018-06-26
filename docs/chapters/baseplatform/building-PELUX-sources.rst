@@ -104,6 +104,8 @@ Building the image
 Finally, build the desired image. See the variables description above for
 information on the different images.
 
+.. note:: Building an image takes some time, therefore consider `building the sdk installer <http://pelux.io/software-factory/master/swf-blueprint/docs/articles/baseplatform/creating-sdk.html>`_ or reduce the future builds by `setting up and using Yocto cache <http://pelux.io/software-factory/master/swf-blueprint/docs/articles/infrastructure/ci-cd/howto-yocto-cache.html?highlight=mirror#setting-up-and-using-a-yocto-cache>`_ 
+
 .. code-block:: bash
 
     bitbake <image>
