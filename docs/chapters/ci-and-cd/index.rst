@@ -9,4 +9,5 @@ Continuous integration and deployment
     setting-up-automated-testing-yocto
     ../../swf-blueprint/docs/articles/infrastructure/ci-cd/considerations
     pelux-ci-cd-jobs
+    ../../swf-blueprint/docs/articles/infrastructure/ci-cd/howto-yocto-cache
 
