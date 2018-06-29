@@ -7,4 +7,5 @@ The following chapters describes the architecture of the PELUX platform.
 
    ../../swf-blueprint/docs/articles/architecture/arch-intro.rst
    SOTA-system.rst
- 
+   ../../swf-blueprint/docs/articles/architecture/arch-layers.rst
+
