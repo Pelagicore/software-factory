@@ -163,9 +163,55 @@ You can now build and test basically any image using ``bitbake -c testimage <my 
 
     bitbake -c testimage core-image-pelux
 
+Adding a new test
+-----------------
 
+The unit tests run by bitbake when executing the `testimage` target of an image
+are Python scripts executed on the build machine. They rely on the standard
+`unittest` module and infrastructure but are extended by Yocto's `oeqa` module.
 
+The unittest module of Python offers the basic testing capabilities. For
+instance, the `TestCase` class has an `assertTrue(condition, message)` method to
+verify whether a condition is true. This module is documented `in the Python
+documentation`_.
+
+The `oeqa` module extends unittest with additional features. For instance, the
+`OERuntimeTestCase` class has a `target.run(command)` method which can remotely
+trigger a command via SSH. Other functionalities include files copying or
+package management. This module is documented `in the Yocto documentation`_.
+
+Adding a new test can be done by creating a new `.py` file under the
+`lib/oeqa/runtime/cases` directory of any Yocto layer. For instance, let's
+create a minimal test case checking the output and status of the `echo` command.
+Put the following code into
+`sources/meta-pelux/lib/oeqa/runtime/cases/hello.py`
+
+.. code-block:: python
+
+    from oeqa.runtime.case import OERuntimeTestCase
+    from oeqa.core.decorator.depends import OETestDepends
+
+    class HelloTest(OERuntimeTestCase):
+        @OETestDepends(['ssh.SSHTest.test_ssh'])
+        def test_hello(self):
+            (status, output) = self.target.run("echo hello")
+            self.assertTrue(status == 0,"'echo hello' did not return a 0 status")
+            self.assertTrue(output == "hello", "'echo hello' did not show hello")
+
+Bitbake can now find this test but it won't be executed by default. If you want
+your test to be ran, you need to set the `TEST_SUITES` variable in your
+`local.conf`. For instance, add the following line:
+
+.. code-block:: bash
+
+    TEST_SUITES = "ping ssh hello"
+
+Note that the order is important and that there might be dependencies between
+tests. Here, `hello` depends on `ssh` which depends on `ping`. Various examples of
+test cases can be found in `sources/poky/meta/lib/oeqa/runtime/cases/`.
 
 .. _testing: http://www.yoctoproject.org/docs/2.2/dev-manual/dev-manual.html#performing-automated-runtime-testing.
 .. _meta-pelux: https://github.com/Pelagicore/meta-pelux
+.. _in the Python documentation: https://docs.python.org/2/library/unittest.html
+.. _in the Yocto documentation: https://wiki.yoctoproject.org/wiki/Image_tests#Writing_new_tests
 
