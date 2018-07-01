@@ -142,14 +142,6 @@ using e.g. "ip a".
 
 Building and testing an image
 -----------------------------
-Current issues in poky means we have to apply a patch needs to be applied:
-`0001-Fix-automated-runtime-testing-using-SystemdbootTarge.patch` which is located in the meta-pelux_
-repo in `layers/poky/patch/`.
-
-.. code-block:: bash
-
-    cd ../sources/poky/
-    git am /path/to/meta-pelux/layers/poky/patch/0001-Fix-automated-runtime-testing-using-SystemdbootTarge.patch
 
 There is some configuration that needs to be setup in local.conf in order to enable target testing, so add the
 following to conf/local.conf
