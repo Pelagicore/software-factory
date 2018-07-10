@@ -2,11 +2,6 @@
 
 .. _SOTA-system:
 
-.. toctree::
-    :hidden:
-
-    ../../swf-blueprint/docs/articles/architecture/arch-vertical-configurations.rst
-    ../../swf-blueprint/docs/articles/architecture/arch-glossary.rst
 
 SOTA system
 ===========
