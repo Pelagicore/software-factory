@@ -94,6 +94,24 @@ Prepare the release notes
   Baseline used in the release.
 * Mention that the release notes themselves are part of the release.
 
+Prepare the source code
+^^^^^^^^^^^^^^^^^^^^^^^
+To comply with the software licences that require publishing the source code, we
+use Yocto Archiver by adding the following to the ``local.conf``:
+
+.. code-block:: ini
+
+   INHERIT += "archiver"
+   ARCHIVER_MODE[src] = "original"
+
+During the creation of your image, the source from all recipes that deploy packages
+to the image is placed within subdirectories of DEPLOY_DIR/sources based on the
+LICENSE for each recipe.
+
+Releasing the entire directory enables us to comply with requirements concerning
+providing the unmodified source. It is important to note that the size of the
+directory can get large.
+
 Announce the release
 ^^^^^^^^^^^^^^^^^^^^
 * Update the downloads page on ``pelux.io``. Put the release notes there.
