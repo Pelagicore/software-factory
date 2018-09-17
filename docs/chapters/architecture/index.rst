@@ -10,3 +10,4 @@ The following chapters describes the architecture of the PELUX platform.
    SOTA/index.rst
    DLT/index.rst
    SWC/index.rst
+   Lifecycle/index.rst

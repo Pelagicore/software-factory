@@ -178,3 +178,5 @@ popups
 softwarecontainer
 wayland
 sandboxing
+Luxoft
+uptime
