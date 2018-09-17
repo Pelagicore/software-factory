@@ -9,4 +9,4 @@ The following chapters describes the architecture of the PELUX platform.
    ../../swf-blueprint/docs/articles/architecture/arch-layers.rst
    SOTA/index.rst
    DLT/index.rst
-   GENIVI-Lifecycle-Management.rst
+   Lifecycle/index.rst
