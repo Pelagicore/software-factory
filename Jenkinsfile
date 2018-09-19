@@ -54,7 +54,7 @@ pipeline {
                     sh "mv build/docs/html/ ${directoryName}"
 
                     // Archive
-                    archive "${directoryName}/**/*"
+                    archiveArtifacts artifacts: "${directoryName}/**/*", fingerprint: true
                 }
             }
         }
