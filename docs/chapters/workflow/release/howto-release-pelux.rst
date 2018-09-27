@@ -65,6 +65,7 @@ Prepare the manifest
 * Make sure the SDK builds properly for all variants and that it works for
   cross-compilation.
 * Create a tag in the release branch in pelux-manifests.
+* Change value of ``DISTRO_VERSION`` in ``meta-pelux/conf/distro/pelux.conf``
 
 Prepare the SDE
 ^^^^^^^^^^^^^^^
