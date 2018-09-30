@@ -3,7 +3,7 @@ Setting up automated testing on a NUC using Yocto
 
 This article describes how automated deployment can be set up for test automation of images on a
 HW-target directly from bitbake on the build host. Relevant upstream documentation is available in the Yocto docs
-for automated runtime testing_
+for automated runtime testing_.
 
 After following this how-to you should have:
 
@@ -210,7 +210,7 @@ Note that the order is important and that there might be dependencies between
 tests. Here, `hello` depends on `ssh` which depends on `ping`. Various examples of
 test cases can be found in `sources/poky/meta/lib/oeqa/runtime/cases/`.
 
-.. _testing: http://www.yoctoproject.org/docs/2.2/dev-manual/dev-manual.html#performing-automated-runtime-testing.
+.. _testing: http://www.yoctoproject.org/docs/current/dev-manual/dev-manual.html#performing-automated-runtime-testing
 .. _meta-pelux: https://github.com/Pelagicore/meta-pelux
 .. _in the Python documentation: https://docs.python.org/2/library/unittest.html
 .. _in the Yocto documentation: https://wiki.yoctoproject.org/wiki/Image_tests#Writing_new_tests
