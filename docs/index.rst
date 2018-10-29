@@ -29,7 +29,7 @@ the dashboard of the car as well as the head-unit, which is usually placed in or
 above the center stack where one normally had just a radio back in the days.
 
 IVI systems are obviously put into cars by its car maker. However, most car
-makers don't develop the software for these systems in-house, but they contract
+makers do not develop the software for these systems in-house, but they contract
 a large software supplier. These software suppliers usually provide both
 hardware and software as a bundle.
 

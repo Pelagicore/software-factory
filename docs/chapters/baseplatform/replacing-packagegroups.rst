@@ -33,7 +33,7 @@ then simply include the following line in the new image-recipe.
 
 If the new image want to omit all of the Qt Auto components in the above mentioned packagegroups
 and add some other component ``<other-component>``, then it can simply inherit from ``core-image-pelux`` 
-in it's image-recipe and append ``<other-component>`` to the image.
+in its image-recipe and append ``<other-component>`` to the image.
 
 .. code-block:: bash
 
@@ -63,4 +63,3 @@ are needed, then update the image-recipe as follows.
 
     TOOLCHAIN_HOST_TASK_remove = " nativesdk-packagegroup-b2qt-automotive-qt5-toolchain-host "
     TOOLCHAIN_TARGET_TASK_remove = " packagegroup-b2qt-automotive-qt5-toolchain-target "
-

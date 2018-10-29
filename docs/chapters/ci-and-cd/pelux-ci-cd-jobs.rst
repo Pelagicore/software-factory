@@ -75,7 +75,7 @@ PELUX Software Factory Deploy
     served.
 
 Wipe Cache Weekly
-    Wipes out the Yocto cache once a week to make sure it doesn't grow out of
+    Wipes out the Yocto cache once a week to make sure it does not grow out of
     control.
 
 .. _multi-branch pipelines: https://wiki.jenkins.io/display/JENKINS/Pipeline+Multibranch+Plugin

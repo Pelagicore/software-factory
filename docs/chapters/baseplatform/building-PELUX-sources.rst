@@ -124,7 +124,7 @@ Building with Vagrant
 
 When we build internally at Pelagicore in our CI system, we use Docker with
 Vagrant, however only in a GNU/Linux system. It should still work under Windows
-or OSX, but we haven't tried it.
+or OSX, but we have not tried it.
 
 Dependencies:
 ^^^^^^^^^^^^^
