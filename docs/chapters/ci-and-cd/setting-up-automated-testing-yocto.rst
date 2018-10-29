@@ -2,8 +2,8 @@ Setting up automated testing on a NUC using Yocto
 =================================================
 
 This article describes how automated deployment can be set up for test automation of images on a
-HW-target directly from bitbake on the build host. Relevant upstream documentation is available in the Yocto docs
-for automated runtime testing_.
+HW-target directly from bitbake on the build host. Relevant upstream documentation is available
+in the Yocto docs for automated runtime testing_.
 
 After following this how-to you should have:
 
@@ -13,25 +13,26 @@ After following this how-to you should have:
 
 How it works
 ------------
-In order to facilitate the deployment of images to the NUC a "testmaster" image is used. The NUC is setup to boot
-this testmaster image by default, and then bitbake can deploy the target rootfs and target kernel using scp and some
-scripting.
+In order to facilitate the deployment of images to the NUC a "testmaster" image is used. The NUC
+is setup to boot this testmaster image by default, and then bitbake can deploy the target rootfs
+and target kernel using scp and some scripting.
 
-The target rootfs is put on a separate partition, so the testmaster stays intact. Then the bootloader is
-told to boot a secondary entry called "test" once, and the target is rebooted which will cause it to boot using the
-rootfs and kernel that should be tested. The tests are then triggered using an ssh connection, and when all tests are
-done the target is rebooted once more so it ends up in testmaster image again.
+The target rootfs is put on a separate partition, so the testmaster stays intact. Then the
+bootloader is told to boot a secondary entry called "test" once, and the target is rebooted which
+will cause it to boot using the rootfs and kernel that should be tested. The tests are then
+triggered using an ssh connection, and when all tests are done the target is rebooted once more so
+it ends up in testmaster image again.
 
-There are hooks for enabling bitbake to power-cycle the NUC, which is required if the testing should be able
-to recover from e.g. images that doesn't boot. Without those hooks it depends on that a reboot can be initiated over an
-ssh connection. This how-to will not describe these hooks though.
+There are hooks for enabling bitbake to power-cycle the NUC, which is required if the testing should
+be able to recover from e.g. images that do not boot. Without those hooks it depends on that a
+reboot can be initiated over an ssh connection. This how-to will not describe these hooks though.
 
 
 Preparing the NUC
 -----------------
-There is an image called `core-image-testmaster` which is used as a basis for the setup. Following are a number of
-manual steps that need to be performed when deploying this image. The `repo` tool is used in the examples, for
-more information see :ref:`using-the-repo-tool`
+There is an image called `core-image-testmaster` which is used as a basis for the setup. Following
+are a number of manual steps that need to be performed when deploying this image. The `repo` tool
+is used in the examples, for more information see :ref:`using-the-repo-tool`
 
 Start by building the image:
 
@@ -55,11 +56,12 @@ Partition # File system Label      Comment
 4           ext3        testrootfs Will be mounted by scripts, so need correct label
 =========== =========== ========== =======
 
-Instead of deploying directly to the USB-stick using mkefidisk.sh we run mkefidisk on a file-backed loop-device
-in order to leave more space at the end of the disk for partition #4. Mkefidisk would otherwise grow the partition #2
-as much as possible to fill the USB-stick.
+Instead of deploying directly to the USB-stick using mkefidisk.sh we run mkefidisk on a file-backed
+loop-device in order to leave more space at the end of the disk for partition #4. Mkefidisk would
+otherwise grow the partition #2 as much as possible to fill the USB-stick.
 
-Please note that the last argument to mkefidisk.sh is the name of the device on the target HW, e.g. /dev/sda or /dev/mmcblk2, etc.
+Please note that the last argument to mkefidisk.sh is the name of the device on the target HW, e.g.
+/dev/sda or /dev/mmcblk2, etc.
 
 .. code-block:: bash
 
@@ -136,15 +138,15 @@ Now we mount the EFI partition to add a bootloader entry called "test" which boo
     # Unmount
     sudo umount /mnt
 
-The USB-stick should now be ready and can be inserted into a NUC and booted, do that and check what IP-address it gets
-using e.g. "ip a".
+The USB-stick should now be ready and can be inserted into a NUC and booted, do that and check what
+IP-address it gets using e.g. "ip a".
 
 
 Building and testing an image
 -----------------------------
 
-There is some configuration that needs to be setup in local.conf in order to enable target testing, so add the
-following to conf/local.conf
+There is some configuration that needs to be setup in local.conf in order to enable target testing,
+so add the following to conf/local.conf
 
 .. code-block:: bash
 
@@ -154,8 +156,8 @@ following to conf/local.conf
     TEST_TARGET_IP = "<IP of NUC>"
     TEST_SERVER_IP = "<IP of machine used for building>"
 
-Sometimes we need to set TEST_SERVER_IP, although that shouldn't be necessary according to the docs.
-This might be related to multiple network interfaces confusing the auto-detection.
+Sometimes we need to set TEST_SERVER_IP, although that should not be necessary according to
+the docs. This might be related to multiple network interfaces confusing the auto-detection.
 
 You can now build and test basically any image using ``bitbake -c testimage <my image>``, e.g.:
 
@@ -181,7 +183,7 @@ trigger a command via SSH. Other functionalities include files copying or
 package management. This module is documented `in the Yocto documentation`_.
 
 Adding a new test can be done by creating a new `.py` file under the
-`lib/oeqa/runtime/cases` directory of any Yocto layer. For instance, let's
+`lib/oeqa/runtime/cases` directory of any Yocto layer. For instance, let us
 create a minimal test case checking the output and status of the `echo` command.
 Put the following code into
 `sources/meta-pelux/lib/oeqa/runtime/cases/hello.py`
@@ -198,7 +200,7 @@ Put the following code into
             self.assertTrue(status == 0,"'echo hello' did not return a 0 status")
             self.assertTrue(output == "hello", "'echo hello' did not show hello")
 
-Bitbake can now find this test but it won't be executed by default. If you want
+Bitbake can now find this test but it will not be executed by default. If you want
 your test to be ran, you need to set the `TEST_SUITES` variable in your
 `local.conf`. For instance, add the following line:
 

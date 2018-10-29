@@ -389,7 +389,7 @@ The developers of SWUpdate also provide a meta-swupdate-boards layer with
 example recipes on how to integrate SWUpdate to a couple of platforms. Most of
 the code in this layer is irrelevant to us since it refers to a demo
 "core-image-full-cmdline" image and to platforms such as the wandboard or
-beaglebone which aren't supported by PELUX.
+beaglebone which are not supported by PELUX.
 
 meta-swupdate has been integrated to the default PELUX manifests, to avoid code
 duplication. However, it has been decided that the meta-swupdate-boards
@@ -521,7 +521,7 @@ We will fetch Hawkbit from its GitHub repository.
     $ git clone https://github.com/eclipse/hawkbit
     $ cd hawkbit
 
-Recent versions of Hawkbit aren't yet supported by SWUpdate so we need to
+Recent versions of Hawkbit are not yet supported by SWUpdate so we need to
 manually select a slightly older version of Hawkbit.
 
 .. code-block:: bash
@@ -643,7 +643,7 @@ Going further
 Persistent storage
 """"""""""""""""""
 
-The above instructions don't use a database to store artifacts and metadata.
+The above instructions do not use a database to store artifacts and metadata.
 This means that every time Hawkbit will be restarted, its rollout campaigns
 will be lost. This is handy for a development environment but unsustainable for
 a real world scenario.

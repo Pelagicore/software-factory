@@ -51,11 +51,11 @@ Prepare the manifest
 * Point to specific layer revisions in ``pelux.xml`` and push the manifest to
   the release branch.
 
-    * Don't point to tags here, since tags are moving targets. We create
+    * Do not point to tags here, since tags are moving targets. We create
       tags in our own layers for convenience, and to make maintenance
-      easier, but don't point to them here.
+      easier, but do not point to them here.
     * Make sure the commits pointed to are on the branches matching the
-      Yocto release we're targeting, and that they match what the tags point to.
+      Yocto release we are targeting, and that they match what the tags point to.
     * For the Qt layers, point to revisions for the Qt release targeted in
       this PELUX Baseline release.
 
