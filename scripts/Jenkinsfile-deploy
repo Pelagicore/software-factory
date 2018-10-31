@@ -13,31 +13,29 @@
  * Software Factory, and 2) it keeps the script under version control rather
  * than on the Jenkins instance.
  *
- * In short, this script looks for all tags on the remote, and builds the SWF
+ * In short, this script looks for all branches on the remote, and builds the SWF
  * for them, plus master. If there has been changes since last successful build,
- * we build all tags and branches, and deploy them to the web server
+ * we build all branches, and deploy them to the web server.
  */
 
-// By running git ls-remote we can find all branches and tags on the remote for
-// this git. We then parse the data into a list of SHA IDs and a list of branch
-// names and tag names.
-def branchesAndTags = {
-    // List all tags on the remote, and list all branches on the remote
-    String tags = sh returnStdout: true, script: "git ls-remote --tags --refs origin"
+// By running git ls-remote we can find all branches on the remote for this git.
+// We then parse the data into a list of SHA IDs and a list of branch names.
+def getBranchesAndIDs = {
+    // List all branches on the remote
     String branches = sh returnStdout: true, script: "git ls-remote --heads origin"
 
     // Combine the two lists and split on newline.
     // .splitEachLine() is apparently broken in Jenkins :(
-    String[] rawTargets = (tags + branches).split('\n')
+    String[] rawTargets = branches.split('\n')
     String[] shaList = []
     String[] buildList = []
 
-    // For each line, we save the sha-id and the branch/tag name
+    // For each line, we save the sha-id and the branch name
     for (line in rawTargets) {
         record = line.split('\t')
 
-        // We remove the refs/heads/ or refs/tags/ from the output
-        String cleanName = record[1].replaceAll(/refs\/(heads|tags)\//, "")
+        // We remove the refs/heads/ from the output
+        String cleanName = record[1].replaceAll(/refs\/(heads)\//, "")
 
         // Save the parts in their respective lists
         shaList += record[0]
@@ -49,7 +47,7 @@ def branchesAndTags = {
 }
 
 // We only want to run further if there is a difference in which SHA IDs are
-// listed for the branches and tags. We compare the file in this build with the
+// listed for the branches. We compare the file in this build with the
 // file from the latest successful build to check this.
 def shouldWeRun = { String shaFile ->
     // Check the list of sha IDs from last successful build with the current one
@@ -82,8 +80,8 @@ node('WWW && !master') {
         sh "git submodule init"
         sh "git submodule update"
 
-        // Get list of branches and tags to build, deconstruct the returned list
-        (shaList, buildList) = branchesAndTags()
+        // Get list of branches build, deconstruct the returned list
+        (shaList, buildList) = getBranchesAndIDs()
 
         // Save the list of refs until next time
         writeFile file: shaFile, text: shaList.join('\n')
@@ -111,7 +109,7 @@ node('WWW && !master') {
 
     for (build in buildList) {
         stage("Build ${build}") {
-            // How do we build for each tag/branch
+            // How do we build for each branch
             sh "git checkout ${build}"
             sh "git submodule update"
 
