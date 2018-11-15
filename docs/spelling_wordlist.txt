@@ -166,3 +166,15 @@ Appender
 Neue
 Telematik
 offlinetrace
+pulseaudio
+cgroups
+telematics
+namespace
+org
+genivi
+pelagicore
+popup
+popups
+softwarecontainer
+wayland
+sandboxing
