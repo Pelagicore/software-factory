@@ -29,7 +29,7 @@ Basic usage
 
 - SoftwareContainerAgent component is started at the PELUX boot-up
 - An application launcher is used to launch applications in containerized form 
-  using the d-bus interface provided by the SoftwareContainerAgent. In PELUX 
+  using the d-bus interface provided by the SoftwareContainerAgent. In PELUX,
   QtApplicationManager is used to launch Neptune3 applications in container
 
 Basic requirements
@@ -38,6 +38,7 @@ Basic requirements
 SoftwareContainerAgent should provide mechanisms,
 
 - To create container
+- To destroy container
 - To bind-mount file system paths
 - To enable communication between the contained system and the host system in 
   order to access host system environment, services and resources, for e.g.
@@ -55,8 +56,6 @@ SoftwareContainerAgent should provide mechanisms,
 +-----------------------+
 | cgroups               |
 +-----------------------+
-
-- To destroy container
 
 Quality goals
 ^^^^^^^^^^^^^
