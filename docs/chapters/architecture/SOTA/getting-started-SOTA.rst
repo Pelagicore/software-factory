@@ -234,6 +234,7 @@ the `corresponding Hawkbit documentation page`_.
 
 .. _corresponding Hawkbit documentation page: https://www.eclipse.org/hawkbit/documentation/security/security.html
 
+.. tags:: howto
 
 References
 ^^^^^^^^^^
