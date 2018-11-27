@@ -9,10 +9,39 @@ There are two types of releases, source releases, and binary releases. A binary
 release has all the requirements of a source release and more. This split is for
 licensing reasons, as there are more obligations when doing a binary release.
 
+Binary release
+--------------
+Binary images (starting from Pelux 3.0) are now available for `download`_. Each new release will have a set of binary images supporting the various variants as mentioned below.
+
+Currently 4 different variants are released. Every hardware offers the qtauto image as well as the minimal image, while QEMU offers only the minimal image. 
+
+Besides the images, SDK is also released with the following format: 
+``pelux-glibc-x86_64-core-image-pelux-qtauto-neptune-dev-<VARIANT>.sh``
+
+.. This is to get red and green colours for the symbols below
+.. role:: available
+.. role:: unavailable
+.. raw:: html
+
+    <!-- The defined roles in rst will translate to style sheet classes -->
+    <style> .available {color:green} .unavailable {color:red} </style>
+    
++--------------------------------------------+------------------+------------------+------------------+-------------------+
+|                                            |      Variant name                                                          |
++          Image name                        +------------------+------------------+------------------+-------------------+
+|                                            | intel            | arp              | rpi              | qemu              |
++============================================+==================+==================+==================+===================+
+| core-image-pelux-minimal-dev               | :available:`✔`   | :available:`✔`   | :available:`✔`   | :available:`✔`    |
++--------------------------------------------+------------------+------------------+------------------+-------------------+
+| core-image-pelux-qtauto-neptune-dev        | :available:`✔`   | :available:`✔`   | :available:`✔`   | :unavailable:`✘`  |
++--------------------------------------------+------------------+------------------+------------------+-------------------+ 
+
+
 Source release
 --------------
-In a source release, we release no binaries, which means that any binary parts,
-such as the platform itself, will have to be built by the user.
+The release process of PELUX sources is compliant to yocto source release which can be found 
+on `Yocto Development Manual`_. The URL for PELUXs' released sources is here_.
+
 
 List of artifacts
 ^^^^^^^^^^^^^^^^^
@@ -108,7 +137,7 @@ Release notes
     ``PELUX_<VERSION>_Release_Notes`` where <VERSION> is the version number of
     the release.
 
-Binary release
---------------
-TBD
 
+.. _`Yocto Development Manual`: https://www.yoctoproject.org/docs/1.8/dev-manual/dev-manual.html#providing-the-source-code
+.. _here: https://pelux.io/artifacts/pelux/3.0/sources/source-release/
+.. _`download`: https://pelux.io/downloads/
