@@ -8,12 +8,6 @@ Building PELUX sources
 This chapter details how to download and configure the sources of a PELUX build, so
 that an image can be built.
 
-To obtain a PELUX release, simply download the manifest (`pelux.xml`) used for
-building, and decide what image to build. Currently there are two versions:
-`core-image-pelux-minimal` and `core-image-pelux-qtauto-neptune`. The latter
-being a version that includes `Qt Automotive Suite`_ components that enable the
-NeptuneUI demo application.
-
 A note on development images
 ----------------------------
 Both PELUX images are available as `-dev` variants, which include some extra
@@ -32,7 +26,7 @@ Building locally
 ----------------
 
 Create a directory for the PELUX build. Instruct repo tool to fetch a manifest
-using the command `repo init`. In this context, branch denotes what branch of
+using the command `repo init`. In this context, branch denotes what branch of the
 git repo `pelux-manifests` to use. If you want to use a released version of
 PELUX, use the SHA id of the commit pointed to by the release tag (or the branch
 that the commit lies on). Otherwise, ``master`` is usually a good choice for
@@ -85,7 +79,7 @@ When done fetching the sources, create a build directory and set up bitbake.
 ``TEMPLATECONF`` tells the ``oe-init-build-env`` script which path to fetch
 configuration samples from.
 
-.. note:: The example below get the template configuration for the Intel BSP
+.. note:: The example below gets the template configuration for the Intel BSP
           without Qt Automotive Suite (QtAS). Use ``intel-qtauto`` as the last
           part of the path to get QtAS support. The same pattern is used for the
           Raspberry Pi BSP (``rpi`` and ``rpi-qtauto``). There is also
@@ -95,8 +89,8 @@ configuration samples from.
 
     TEMPLATECONF=`pwd`/sources/meta-pelux/conf/variant/intel source sources/poky/oe-init-build-env build
 
-The script will create configs if there are no configs present, a message about
-created ``conf/local.conf`` and ``conf/bblayers.conf`` files is normal.
+The script will create configurations if there are no configurations present. A printout about
+creating ``conf/local.conf`` and ``conf/bblayers.conf`` is normal.
 
 Building the image
 ^^^^^^^^^^^^^^^^^^
@@ -104,7 +98,10 @@ Building the image
 Finally, build the desired image. See the variables description above for
 information on the different images.
 
-.. note:: Building an image takes some time, therefore consider `building the sdk installer <http://pelux.io/software-factory/master/swf-blueprint/docs/articles/baseplatform/creating-sdk.html>`_ or reduce the future builds by `setting up and using Yocto cache <http://pelux.io/software-factory/master/swf-blueprint/docs/articles/infrastructure/ci-cd/howto-yocto-cache.html?highlight=mirror#setting-up-and-using-a-yocto-cache>`_ 
+.. note:: Building an image takes some time, therefore consider `building the sdk installer
+          <http://pelux.io/software-factory/master/swf-blueprint/docs/articles/baseplatform/creating-sdk.html>`_
+          or reduce the future builds by `setting up and using Yocto cache
+          <http://pelux.io/software-factory/master/swf-blueprint/docs/articles/infrastructure/ci-cd/howto-yocto-cache.html?highlight=mirror#setting-up-and-using-a-yocto-cache>`_ 
 
 .. code-block:: bash
 
@@ -122,9 +119,8 @@ the SD card.
 Building with Vagrant
 ---------------------
 
-When we build internally at Pelagicore in our CI system, we use Docker with
-Vagrant, however only in a GNU/Linux system. It should still work under Windows
-or OSX, but we have not tried it.
+In the current setup in our CI system we use Docker with Vagrant, however only in a
+GNU/Linux system. It should still work under Windows or OSX, but we have not tried it.
 
 Dependencies:
 ^^^^^^^^^^^^^
@@ -156,7 +152,7 @@ Procedure:
 
 3. Run inside the Docker container
 
-At this point, we recommend using ``vagrant ssh`` and follow the same
+At this point, we recommend using ``vagrant ssh`` and to follow the same
 instructions as when building locally (but inside the Docker container).
 
 4. Move the built images to the host
