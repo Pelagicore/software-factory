@@ -1,5 +1,5 @@
-Version control usage
-*********************
+Version Control System Usage
+****************************
 
 When working with software, version control is essential. This chapter shows how
 we try to work with version control, and git in particular, within PELUX.

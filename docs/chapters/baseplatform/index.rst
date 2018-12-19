@@ -1,5 +1,5 @@
-Base Platform
-*************
+Reference Integration Platform
+******************************
 
 PELUX as a platform is compiled from a lot of different projects with help of Yocto_. In the long run a platform developer will need to get comfortable reading `their documentation`_ but it should be enough to read the chapters here to get started.
 
