@@ -1,4 +1,4 @@
-Continuous integration and deployment
+Continuous Integration and Deployment
 *************************************
 
 .. toctree::
