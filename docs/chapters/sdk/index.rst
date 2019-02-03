@@ -7,7 +7,7 @@ implementers but can be used for developing applications and other kinds of soft
 well. The SDK installer script can be downloaded from `PELUX website`_. Each SDK installer is for a
 specific target hardware platform.
 
-.. _`PELUX website`: http://pelux.io/downloads
+.. _`PELUX website`: https://pelux.io/releases
 
 .. toctree::
     installing-the-sdk.rst
