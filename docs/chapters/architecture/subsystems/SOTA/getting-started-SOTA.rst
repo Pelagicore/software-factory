@@ -49,7 +49,7 @@ We will fetch Hawkbit from its GitHub repository.
     $ git clone https://github.com/eclipse/hawkbit
     $ cd hawkbit
 
-Recent versions of Hawkbit aren't yet supported by SWUpdate so we need to
+Recent versions of Hawkbit are not yet supported by SWUpdate so we need to
 manually select a slightly older version of Hawkbit.
 
 .. code-block:: bash
