@@ -125,7 +125,19 @@ actdiag_html_image_format = "SVG"
 # - https://github.com/snide/sphinx_rtd_theme
 # - https://pypi.python.org/pypi/sphinx_rtd_theme
 # - python-sphinx-rtd-theme package (on Debian)
-html_theme = "sphinx_rtd_theme"
+html_theme = "alabaster"
+
+html_theme_options = {
+    # Fonts
+    'font_family': 'Roboto, Helvetica, Arial, sans-serif',
+    'head_font_family': 'Roboto, Helvetica, Arial, sans-serif',
+    'font_size': '16px',
+
+    # Navigation
+    'sidebar_collapse': 'false'
+    #'show_relbars': 'true' #Not working option
+
+}
 
 # html_logo = None
 # html_favicon = None
