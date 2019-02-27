@@ -133,8 +133,15 @@ html_theme_options = {
     'head_font_family': 'Roboto, Helvetica, Arial, sans-serif',
     'font_size': '16px',
 
+    # Project info
+    'logo': 'logo.png',
+    'logo_name': 'true',
+
     # Navigation
-    'sidebar_collapse': 'false'
+    'show_related': 'true',
+    'sidebar_includehidden': 'true',
+    'sidebar_collapse': 'false',
+    'fixed_sidebar': 'true'
     #'show_relbars': 'true' #Not working option
 
 }
