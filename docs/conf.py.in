@@ -81,8 +81,11 @@ project = u'@PROJECT_NAME@'
 copyright = u'Pelagicore AB, licensed under CC-BY-SA 4.0'
 author = u'Pelagicore AB'
 
-version = u'@PROJECT_VERSION@-alpha'
-release = u"@PROJECT_VERSION@-alpha-@REVISION@ @DATE@"
+# version should be set to @PROJECT_VERSION@ once stable PELUX version is released
+# PROJECT_VERSION is defined in CMakeLists.txt as VERSION
+#version = u'@PROJECT_VERSION@'
+version = u'master'
+release = u"@PROJECT_VERSION@-@REVISION@ @DATE@"
 
 language = None
 
