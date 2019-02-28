@@ -1,11 +1,7 @@
-
 # Software Factory
 PELUX Software Factory documentation
 
 Software Factory is maintained at https://github.com/Pelagicore/software-factory
-
-Maintainer: Joakim Gross <joakim.gross@pelagicore.com>
-
 
 ## Dependencies
 * cmake
@@ -72,7 +68,8 @@ To build the docs without checking the spelling, type:
     make sphinx-html
 
 # License and Copyright
-Copyright (C) Pelagicore AB 2017
+Copyright &copy; Pelagicore AB 2017
+Copyright &copy; Luxoft Sweden AB 2018-2019
 
 This work is licensed under the Creative Commons
 Attribution-ShareAlike 4.0 International License. To view a copy of
@@ -83,4 +80,3 @@ send a letter to Creative Commons, PO Box 1866, Mountain View, CA
 Code and scripts are licensed under LGPL 2.1
 
 SPDX-License-Identifier: CC-BY-SA-4.0
-
