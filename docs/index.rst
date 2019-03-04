@@ -54,8 +54,11 @@ system, build prototypes or simply download and run it.
 
 -------------------
 
+Table of Contents
+*****************
+
 .. toctree::
-    :caption: Table of contents
+    :caption: PELUX Development Handbook
     :maxdepth: 2
 
     chapters/architecture/index
