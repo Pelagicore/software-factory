@@ -74,7 +74,6 @@ add_custom_target(sphinx-latexpdf
         -d "${SPHINX_CACHE_DIR}"
         "${CMAKE_CURRENT_SOURCE_DIR}"
         "${SPHINX_PDF_DIR}"
-    COMMAND make -C "${SPHINX_PDF_DIR}" all-pdf > /dev/null
     COMMENT "Building Latex/PDF documentation with Sphinx")
 
 add_dependencies(doc spelling sphinx-html)
