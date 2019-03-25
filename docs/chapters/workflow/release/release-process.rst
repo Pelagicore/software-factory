@@ -15,7 +15,8 @@ Binary images (starting from Pelux 3.0) are now available for `download`_. Each 
 
 Currently 4 different variants are released. Every hardware offers the qtauto image as well as the minimal image, while QEMU offers only the minimal image. 
 
-Besides the images, SDK is also released with the following format: 
+Besides the images an SDK is also available.
+The file name for the SDK installer looks like this:
 ``pelux-glibc-x86_64-core-image-pelux-qtauto-neptune-dev-<VARIANT>.sh``
 
 .. This is to get red and green colours for the symbols below
@@ -25,7 +26,7 @@ Besides the images, SDK is also released with the following format:
 
     <!-- The defined roles in rst will translate to style sheet classes -->
     <style> .available {color:green} .unavailable {color:red} </style>
-    
+
 +--------------------------------------------+------------------+------------------+------------------+-------------------+
 |                                            |      Variant name                                                          |
 +          Image name                        +------------------+------------------+------------------+-------------------+
@@ -39,8 +40,8 @@ Besides the images, SDK is also released with the following format:
 
 Source release
 --------------
-The release process of PELUX sources is compliant to yocto source release which can be found 
-on `Yocto Development Manual`_. The URL for PELUXs' released sources is here_.
+The release process for PELUX sources follows the guidelines set up in the
+`Yocto Development Manual`_. The URL for PELUXs' released sources is here_.
 
 
 List of artifacts
