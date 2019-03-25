@@ -184,3 +184,7 @@ texinfo_documents = [
      author, '@PROJECT_NAME@', 'One line description of project.',
      'Miscellaneous'),
 ]
+
+html_theme_options = {
+    'canonical_url': 'https://pelux.io/software-factory/master/',
+}
