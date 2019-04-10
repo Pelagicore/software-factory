@@ -11,9 +11,18 @@ licensing reasons, as there are more obligations when doing a binary release.
 
 Binary release
 --------------
-Binary images (starting from Pelux 3.0) are now available for `download`_. Each new release will have a set of binary images supporting the various variants as mentioned below.
+Binary images (starting from Pelux 3.0) are now available for `releases`_.
+Each new release will have a set of binary images supporting the various
+variants as mentioned below.
 
-Currently 4 different variants are released. Every hardware offers the qtauto image as well as the minimal image, while QEMU offers only the minimal image. 
+Currently 4 different platforms are supported:
+- Intel x86_64
+- Raspberry Pi 3
+- Automotive Reference Platform
+- QEMU
+
+2 flavors are offered for each hardware platform: Qt Auto image as well as the
+minimal one, while only minimal image is offered for QEMU.
 
 Besides the images an SDK is also available.
 The file name for the SDK installer looks like this:
@@ -110,6 +119,7 @@ around versioning above.
 
 The following of our own layers are included in a PELUX baseline release:
 
+* meta-arp
 * meta-bistro
 * meta-pelux
 * meta-template
@@ -141,4 +151,4 @@ Release notes
 
 .. _`Yocto Development Manual`: https://www.yoctoproject.org/docs/1.8/dev-manual/dev-manual.html#providing-the-source-code
 .. _here: https://pelux.io/artifacts/pelux/3.0/sources/source-release/
-.. _`download`: https://pelux.io/downloads/
+.. _`releases`: https://pelux.io/releases/
