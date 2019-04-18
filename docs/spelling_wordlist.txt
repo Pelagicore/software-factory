@@ -95,7 +95,6 @@ vfat
 AGL
 NUC
 GPL
-Minnowboard
 functionalities
 Bbuild
 yourproject

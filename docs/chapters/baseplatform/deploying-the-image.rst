@@ -3,5 +3,5 @@
 
 Image names for PELUX targets
 -----------------------------
-* NUC, Minnowboard and ARP with Intel SMARC: ``core-image-pelux-intel-corei7-64.wic``
+* Intel NUC and ARP with Intel SMARC: ``core-image-pelux-intel-corei7-64.wic``
 * Raspberry Pi 3: ``core-image-pelux-raspberrypi3.rpi-sdimg``
