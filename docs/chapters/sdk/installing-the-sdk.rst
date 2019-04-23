@@ -8,5 +8,5 @@ while.
 
 Or you can of course build it yourself as described in :ref:`building-the-sdk`.
 
-.. _`PELUX website`: http://pelux.io/downloads
+.. _`PELUX website`: http://pelux.io/releases
 
