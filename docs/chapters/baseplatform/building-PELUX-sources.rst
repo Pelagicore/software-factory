@@ -13,7 +13,7 @@ A note on development images
 Both PELUX images are available as `-dev` variants, which include some extra
 development and debugging tools. For some platforms, those images are also
 available as `-update` to generate update artifacts for the :ref:`SOTA
-System<SOTA-system>`.
+System<getting-started-sota>`.
 
 It should be noted that the regular image is *not* a production ready image. For
 a production project, it is recommended to create an image that can be based on
