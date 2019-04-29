@@ -58,7 +58,6 @@ system, build prototypes or simply download and run it.
     :caption: Table of contents
     :maxdepth: 2
 
-    chapters/architecture/index
     chapters/baseplatform/index
     chapters/ci-and-cd/index
     chapters/workflow/git/index
