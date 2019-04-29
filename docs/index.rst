@@ -64,6 +64,7 @@ system, build prototypes or simply download and run it.
     chapters/workflow/git/index
     chapters/sdk/index
     chapters/sde/index
+    chapters/swupdate/index
     swf-blueprint/docs/articles/templates/index
     swf-blueprint/docs/articles/licensing/index
     chapters/workflow/release/index
