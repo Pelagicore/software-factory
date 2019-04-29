@@ -16,3 +16,4 @@ specific target hardware platform.
     ../../swf-blueprint/docs/articles/sdk/run-binary-on-target.rst
     ../../swf-blueprint/docs/articles/sdk/configure-qtcreator.rst
     ../../swf-blueprint/docs/articles/sdk/read-system-logs.rst
+    getting-started-SWC.rst
