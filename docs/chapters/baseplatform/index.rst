@@ -8,6 +8,7 @@ PELUX as a platform is compiled from a lot of different projects with help of Yo
 
 .. toctree::
    
+   ../../swf-blueprint/docs/articles/architecture/arch-layers.rst
    ../../swf-blueprint/docs/articles/baseplatform/prerequisites
    ../../swf-blueprint/docs/articles/baseplatform/using-the-repo-tool
    ../../swf-blueprint/docs/articles/baseplatform/repo-manifests
