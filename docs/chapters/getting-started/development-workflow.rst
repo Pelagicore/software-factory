@@ -1,7 +1,12 @@
 Development Workflow
 ====================
 
-The development workflow depends on what is intended to be developed. If the intention is to add or modify a component/service then the SDK is the main track. If it's a bigger development task modifying the platform itself then the more appropriate track is to build the system image from sources.
+The development workflow depends on what is intended to be developed.
+
+If the intention is to add or modify a component/service then one should use the SDK.
+
+If it's a bigger development task modifying the platform itself then the more appropriate
+way is to build the system image from sources.
 
 Component development
 ---------------------
@@ -14,5 +19,4 @@ Component development
 
 Platform development
 --------------------
-* Follow these `instructions <../baseplatform/index.html>`_
-
+* Follow these `instructions <../../chapters/baseplatform/building-PELUX-sources.rst>`_
