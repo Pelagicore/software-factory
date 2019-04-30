@@ -59,7 +59,6 @@ system, build prototypes or simply download and run it.
     :maxdepth: 2
 
     chapters/getting-started/index
-    chapters/architecture/index
     chapters/baseplatform/index
     chapters/ci-and-cd/index
     chapters/workflow/git/index
