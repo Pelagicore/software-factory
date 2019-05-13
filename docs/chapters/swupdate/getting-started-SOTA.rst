@@ -232,7 +232,7 @@ Hawkbit offers mechanisms for device authentication. This is a useful security
 feature to verify the identity of a target. Details on how to set this up in
 the `corresponding Hawkbit documentation page`_.
 
-.. _corresponding Hawkbit documentation page: https://www.eclipse.org/hawkbit/documentation/security/security.html
+.. _corresponding Hawkbit documentation page: https://www.eclipse.org/hawkbit/concepts/authentication
 
 .. tags:: howto
 
