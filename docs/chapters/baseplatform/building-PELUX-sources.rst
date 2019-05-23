@@ -64,15 +64,15 @@ Available images
 +--------------------------------------------+------------------+------------------+------------------+----------------+
 | core-image-pelux-qtauto-neptune            | :unavailable:`✘` | :available:`✔`   | :unavailable:`✘` | :available:`✔` |
 +--------------------------------------------+------------------+------------------+------------------+----------------+
-| core-image-pelux-qtauto-neptune-dev        | :unavailable:`✘` | :unavailable:`✘` | :unavailable:`✘` | :available:`✔` |
+| core-image-pelux-qtauto-neptune-dev        | :unavailable:`✘` | :available:`✔`   | :unavailable:`✘` | :available:`✔` |
 +--------------------------------------------+------------------+------------------+------------------+----------------+
-| core-image-pelux-minimal-update            | :unavailable:`✘` | :unavailable:`✘` | :available:`✔`   | :available:`✔` |
+| core-image-pelux-minimal-update            | :available:`✔`   | :available:`✔`   | :available:`✔`   | :available:`✔` |
 +--------------------------------------------+------------------+------------------+------------------+----------------+
-| core-image-pelux-minimal-dev-update        | :unavailable:`✘` | :unavailable:`✘` | :available:`✔`   | :available:`✔` |
+| core-image-pelux-minimal-dev-update        | :available:`✔`   | :available:`✔`   | :available:`✔`   | :available:`✔` |
 +--------------------------------------------+------------------+------------------+------------------+----------------+
-| core-image-pelux-qtauto-neptune-update     | :unavailable:`✘` | :unavailable:`✘` | :unavailable:`✘` | :available:`✔` |
+| core-image-pelux-qtauto-neptune-update     | :unavailable:`✘` | :available:`✔`   | :unavailable:`✘` | :available:`✔` |
 +--------------------------------------------+------------------+------------------+------------------+----------------+
-| core-image-pelux-qtauto-neptune-dev-update | :unavailable:`✘` | :unavailable:`✘` | :unavailable:`✘` | :available:`✔` |
+| core-image-pelux-qtauto-neptune-dev-update | :unavailable:`✘` | :available:`✔`   | :unavailable:`✘` | :available:`✔` |
 +--------------------------------------------+------------------+------------------+------------------+----------------+
 
 When done fetching the sources, create a build directory and set up bitbake.
