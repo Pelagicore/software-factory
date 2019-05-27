@@ -8,7 +8,7 @@ interface designed for touch interaction.
 Requirements for minimal (if not relying on SSH only)
 -----------------------------------------------------
 * Screen with HDMI cable
-* Keyboard and mouse
+* Keyboard
 
 Requirements for Qt Automotive Suite + Neptune
 ----------------------------------------------
