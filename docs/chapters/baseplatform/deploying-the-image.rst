@@ -1,4 +1,6 @@
 
+.. _deploying-the-image:
+
 .. include:: ../../swf-blueprint/docs/articles/baseplatform/deploying-image.rst
 
 Image names for PELUX targets

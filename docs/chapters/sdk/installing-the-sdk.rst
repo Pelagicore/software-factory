@@ -1,3 +1,5 @@
+.. _fetching-the-sdk:
+
 Fetching and installing the SDK
 ===============================
 

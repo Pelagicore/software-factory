@@ -1,7 +1,7 @@
 Hardware Setup
 ==============
 
-There are several variants of PELUX `images <../baseplatform/building-PELUX-sources.html#available-images>`_.
+There are several variants of PELUX :ref:`images <building-pelux-sources-available-images>`.
 Minimal is only the PELUX platform while the QtAuto+Neptune has a rich user
 interface designed for touch interaction.
 
