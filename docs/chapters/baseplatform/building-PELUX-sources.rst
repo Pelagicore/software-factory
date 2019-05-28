@@ -41,6 +41,7 @@ Then make repo tool fetch all sources using the command `repo sync`.
     repo init -u https://github.com/Pelagicore/pelux-manifests.git -b <branch>
     repo sync
 
+.. _building-pelux-sources-available-images:
 
 Available images
 ^^^^^^^^^^^^^^^^
