@@ -181,28 +181,43 @@ Procedure:
 .. code-block:: bash
 
     git clone --recurse-submodules git@github.com:Pelagicore/pelux-manifests.git
+    cd pelux-manifests
 
 
-2. Start Docker through Vagrant
+2. Build and run Docker container
 
 .. code-block:: bash
 
-    docker build -t pelux .
-    docker run -d --name pelux-build -v $(pwd):/docker pelux
+    docker build --build-arg userid=$(id -u) --build-arg groupid=$(id -g) -t pelux .
+    docker run -t -d --name pelux-build -v $(pwd):/docker pelux /bin/bash
 
 3. Run inside the Docker container
 
-At this point, we recommend using ``vagrant ssh`` and to follow the same
+At this point, we recommend using ``docker exec pelux-build <command>`` and to follow the same
 instructions as when building locally (but inside the Docker container).
+
+.. code-block:: bash
+
+    docker exec pelux-build bash -c "/docker/build-in-docker.sh -v <VARIANT> -i <IMAGE> -b <BRANCH>" 
+
+IMAGE and VARIANT options mentioned above
+BRANCH is optional; default - master
 
 4. Move the built images to the host
 
-The directory where you cloned pelux-manifests is bind-mounted to ``/vagrant``
+The directory where you cloned pelux-manifests is bind-mounted to ``/docker``
 inside the container, so you can simply run:
 
 .. code-block:: bash
 
-    cp <YOCTO_DIR>/build/tmp/deploy/images /vagrant
+    docker exec pelux-build bash -c "cp -r build/tmp/deploy/images /docker"
+
+5. Stop and remove container
+
+.. code-block:: bash
+
+    docker stop pelux-build
+    docker rm pelux-build
 
 For more detailed steps, refer to the ``Jenkinsfile`` in ``pelux-manifests``,
 where we have automated our building of PELUX.
