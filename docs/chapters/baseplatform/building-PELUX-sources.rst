@@ -151,10 +151,9 @@ When the build is complete the result will be available in
 ``tmp/deploy/images/<machine>/``. It is possible to generate a number of
 different image formats, ranging from just the rootfs as a tarball to ready
 disk-images containing EFI-bootloader, configuration and rootfs and that can be
-written directly to a storage device. For PELUX, the preferred format for the
-Intel NUC are ``.wic`` images, which are complete disk-images. For the Raspberry
-Pi 3, the preferred format is ``.rpi-sdimg`` which can be directly written to
-the SD card.
+written directly to a storage device. For PELUX, the preferred format is
+``.wic`` images, which are complete disk-images. By default, a compressed wic
+image and a bmap file will be built for faster deployment.
 
 Building with Vagrant
 ---------------------
