@@ -155,10 +155,10 @@ written directly to a storage device. For PELUX, the preferred format is
 ``.wic`` images, which are complete disk-images. By default, a compressed wic
 image and a bmap file will be built for faster deployment.
 
-Building with Vagrant
+Building with Docker
 ---------------------
 
-In the current setup in our CI system we use Docker with Vagrant, however only in a
+In the current setup in our CI system we use Docker, however only in a
 GNU/Linux system. It should still work under Windows or OSX, but we have not tried it.
 
 Dependencies:
