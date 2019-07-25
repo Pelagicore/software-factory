@@ -71,7 +71,8 @@ List of artifacts
     - Instructions or pointers to instructions that have changed as a result of
       the changes since last release.
     - This list of artifacts.
-- Binary Wic images of all the variants for all the supported platforms.
+- Compressed Binary Wic bz2 images of all the variants for all the supported
+  platforms and corresponding bmap files.
 - The source code of all the packages that are included in the released images.
 - SDK installers for all the supported hardware platforms.
 
