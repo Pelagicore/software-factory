@@ -7,7 +7,7 @@
 cmake_minimum_required(VERSION 3.0.2)
 
 project("PELUX Development Handbook"
-        VERSION 3.0
+        VERSION 4.0
         LANGUAGES NONE
 )
 
