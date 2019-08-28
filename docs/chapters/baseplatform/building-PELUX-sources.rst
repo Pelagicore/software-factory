@@ -172,28 +172,33 @@ Dependencies:
           <https://docs.docker.com/engine/installation/linux/docker-ce/debian/>`_
           to install the latest version of Docker.
 
-Procedure:
-^^^^^^^^^^
+Full build procedure:
+^^^^^^^^^^^^^^^^^^^^^
 
 1. Clone the pelux-manifests git repository with submodule
 
 .. code-block:: bash
 
-    git clone --recurse-submodules git@github.com:Pelagicore/pelux-manifests.git
+    git clone --recurse-submodules https://github.com/Pelagicore/pelux-manifests.git
     cd pelux-manifests
 
 
 2. Build and run Docker container
 
+.. note:: If image was build previously you can reuse it and omit build command
+          To verify image existence please run 'docker images pelux'
+
 .. code-block:: bash
 
     docker build --build-arg userid=$(id -u) --build-arg groupid=$(id -g) -t pelux .
-    docker run -t -d --name pelux-build -v $(pwd):/docker pelux /bin/bash
+    docker run -t -d --name pelux-build -v $(pwd):/docker -w /docker pelux /bin/bash
 
 3. Run inside the Docker container
 
 At this point, we recommend using ``docker exec pelux-build <command>`` and to follow the same
 instructions as when building locally (but inside the Docker container).
+
+.. note:: You need 50-100 GB of free space in working directory depending on variant you build
 
 .. code-block:: bash
 
@@ -209,9 +214,66 @@ inside the container, so you can simply run:
 
 .. code-block:: bash
 
-    docker exec pelux-build bash -c "cp -r build/tmp/deploy/images /docker"
+    docker exec pelux-build bash -c "ln -s build/tmp/deploy/images /docker/images"
 
 5. Stop and remove container
+
+.. code-block:: bash
+
+    docker stop pelux-build
+    docker rm pelux-build
+
+Particular layer build procedure:
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+1. Clone the pelux-manifests git repository with submodule
+
+.. code-block:: bash
+
+    git clone --recurse-submodules https://github.com/Pelagicore/pelux-manifests.git
+    cd pelux-manifests
+
+2. Copy layer directory to pelux-manifests
+
+.. code-block:: bash
+
+    cp -r ../<LAYER_NAME> .
+
+3. Build and run Docker container
+
+.. note:: If image was build previously you can reuse it and omit build command
+          To verify image existence please run 'docker images pelux'
+
+.. code-block:: bash
+
+    docker build --build-arg userid=$(id -u) --build-arg groupid=$(id -g) -t pelux .
+    docker run -t -d --name pelux-build -v $(pwd):/docker -w /docker pelux /bin/bash
+
+4. Run inside the Docker container
+
+At this point, we recommend using ``docker exec pelux-build <command>`` and to follow the same
+instructions as when building locally (but inside the Docker container).
+
+.. note:: You need 50-100 GB of free space in working directory depending on variant you build
+
+.. code-block:: bash
+
+    docker exec pelux-build bash -c "/docker/build-in-docker.sh -v <VARIANT> -i <IMAGE> -b <BRANCH> -l <LAYER_NAME>"
+
+IMAGE and VARIANT options mentioned above
+LAYER_NAME is name of directory we copied in step 2
+BRANCH is optional; default - master
+
+5. Move the built images to the host
+
+The directory where you cloned pelux-manifests is bind-mounted to ``/docker``
+inside the container, so you can simply run:
+
+.. code-block:: bash
+
+    docker exec pelux-build bash -c "ln -s build/tmp/deploy/images /docker/images"
+
+6. Stop and remove container
 
 .. code-block:: bash
 
