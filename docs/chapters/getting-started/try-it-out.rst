@@ -28,8 +28,8 @@ Intel NUC
 2. :ref:`Burn <deploying-the-image>` the image to a 16 GB (or larger) USB stick
 3. Insert the USB stick into the Intel NUC and power on. Make sure to configure EFI to boot from USB.
 
-ARP
----
+ARP with Intel SMARC
+--------------------
 1. Get the image you want
 
   * `Latest release <https://pelux.io/releases/#images>`_
