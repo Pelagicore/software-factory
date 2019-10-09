@@ -39,8 +39,9 @@ server installed by default.
 
 Image variants
 --------------
-Pelux can be build for `intel`, `arp`, `rpi`, and `qemu`. Our variants are dependent on the target we are building for.
-If the variant contains only the target, a minimal image will be available to be built with no graphics layer. If the variant contains the target name, and the suffix ``-qtauto``, the minimal image will be available to be build as well as the image containing Qt Automotive.
+Pelux can be build for `intel`, `arp-intel`, `rpi`, and `qemu`. Our variants are dependent on the target we are building for.
+If the variant contains only the target, a minimal image will be available to be built with no graphics layer. If the variant contains the target name,
+and the suffix ``-qtauto``, the minimal image will be available to be build as well as the image containing Qt Automotive.
 
 The only variant which does not offer a graphical UI is QEMU. 
 
@@ -58,8 +59,8 @@ All the variants set different configurations, therefore it is important to spec
 
 **ARP variants**
 
-- arp
-- arp-qtauto
+- arp-intel
+- arp-intel-qtauto
 
 **QEMU variants**
 
@@ -83,7 +84,7 @@ creating ``conf/local.conf`` and ``conf/bblayers.conf`` is normal.
 
 Available images
 ^^^^^^^^^^^^^^^^
-We support intel, ARP and raspberry pi builds. The qt-auto layer can be found on all of them. 
+We support Intel, ARP-Intel and Raspberry Pi builds. The qt-auto layer can be found on all of them. 
 
 Once you have synced the repo, run the following to configure the environment for Qt Automotive images. 
 
@@ -93,10 +94,10 @@ Once you have synced the repo, run the following to configure the environment fo
     TEMPLATECONF=`pwd`/sources/meta-pelux/conf/variant/intel-qtauto source sources/poky/oe-init-build-env build
     # For rpi-qtauto:
     TEMPLATECONF=`pwd`/sources/meta-pelux/conf/variant/rpi-qtauto source sources/poky/oe-init-build-env build
-    # For arp-qtauto:
-    TEMPLATECONF=`pwd`/sources/meta-pelux/conf/variant/arp-qtauto source sources/poky/oe-init-build-env build
+    # For arp-intel-qtauto:
+    TEMPLATECONF=`pwd`/sources/meta-pelux/conf/variant/arp-intel-qtauto source sources/poky/oe-init-build-env build
 
-For ``arp-qtauto``, ``intel-qtauto`` and ``rpi-qtauto`` variants, we support the following images: 
+For ``arp-intel-qtauto``, ``intel-qtauto`` and ``rpi-qtauto`` variants, we support the following images: 
 
 Minimal Images
 """"""""""""""
@@ -120,10 +121,10 @@ In case you want to build only the pelux base image, that can be done by removin
     TEMPLATECONF=`pwd`/sources/meta-pelux/conf/variant/intel source sources/poky/oe-init-build-env build
     # For rpi:
     TEMPLATECONF=`pwd`/sources/meta-pelux/conf/variant/rpi source sources/poky/oe-init-build-env build
-    # For arp:
-    TEMPLATECONF=`pwd`/sources/meta-pelux/conf/variant/arp source sources/poky/oe-init-build-env build
+    # For arp-intel:
+    TEMPLATECONF=`pwd`/sources/meta-pelux/conf/variant/arp-intel source sources/poky/oe-init-build-env build
 
-For ``arp``, ``intel`` and ``rpi`` variants, we support the following images: 
+For ``arp-intel``, ``intel`` and ``rpi`` variants, we support the following images: 
 
 Minimal images
 """"""""""""""
