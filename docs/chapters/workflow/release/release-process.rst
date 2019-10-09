@@ -39,7 +39,7 @@ The file name for the SDK installer looks like this:
 +--------------------------------------------+------------------+------------------+------------------+-------------------+
 |                                            |      Variant name                                                          |
 +          Image name                        +------------------+------------------+------------------+-------------------+
-|                                            | intel            | arp              | rpi              | qemu              |
+|                                            | intel            | arp-intel        | rpi              | qemu              |
 +============================================+==================+==================+==================+===================+
 | core-image-pelux-minimal-dev               | :available:`✔`   | :available:`✔`   | :available:`✔`   | :available:`✔`    |
 +--------------------------------------------+------------------+------------------+------------------+-------------------+
@@ -120,7 +120,6 @@ around versioning above.
 
 The following of our own layers are included in a PELUX baseline release:
 
-* meta-arp
 * meta-bistro
 * meta-pelux
 * meta-template
