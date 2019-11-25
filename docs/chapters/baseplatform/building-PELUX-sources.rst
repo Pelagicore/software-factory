@@ -5,13 +5,14 @@
 Building PELUX
 ==============
 
-Pelux is build on top of multiple sources, they are described on an ``xml`` file called ``pelux.xml``. 
-In order to clone all the sources at once, ``repo`` is used.
+PELUX is built on top of multiple sources, they are described on an ``xml`` file called ``pelux.xml``.
+To clone all the sources at once, ``repo`` is used.
 
 Fetching sources
 ----------------
 
-Create a directory for the PELUX build. On that directory, run ``repo init``, and it will create a ``.repo`` directory which will later be used for fetching the sources.
+Create a directory for the PELUX build. On that directory, run ``repo init``, and it will create a
+``.repo`` directory which will later be used for fetching the sources.
 Run ``repo sync`` to fetch all sources on a new directory called sources.
 
 .. code-block:: bash
@@ -30,16 +31,16 @@ PELUX images are available with the `-dev` suffix, which include some extra
 development and debugging tools. Images are also available as `-update` to generate update artifacts for the :ref:`SOTA
 System<getting-started-sota>`. The `-dev` and `-update` images can also be merged to build `-dev-update` which includes both features on the image. 
 
-It should be noted that the regular image is *not* a production ready image. For
+It should be noted that the regular image is *not* a production-ready image. For
 a production project, it is recommended to create an image that can be based on
-the PELUX image to begin with, but one will probably want to create a custom
+the PELUX image, to begin with, but one will probably want to create a custom
 image eventually, as the project evolves further and further away from vanilla
 PELUX. For example, a PELUX-based image has an empty root password and an ssh
 server installed by default.
 
 Image variants
 --------------
-Pelux can be build for `intel`, `arp-intel`, `rpi`, and `qemu`. Our variants are dependent on the target we are building for.
+PELUX can be built for `intel`, `arp-intel`, `rpi`, and `qemu`. Our variants are dependent on the target we are building for.
 If the variant contains only the target, a minimal image will be available to be built with no graphics layer. If the variant contains the target name,
 and the suffix ``-qtauto``, the minimal image will be available to be build as well as the image containing Qt Automotive.
 
@@ -159,7 +160,7 @@ image and a bmap file will be built for faster deployment.
 Building with Docker
 ---------------------
 
-In the current setup in our CI system we use Docker, however only in a
+In the current setup in our CI system, we use Docker, however only in a
 GNU/Linux system. It should still work under Windows or OSX, but we have not tried it.
 
 Dependencies:
@@ -186,7 +187,7 @@ Full build procedure:
 
 2. Build and run Docker container
 
-.. note:: If image was build previously you can reuse it and omit build command
+.. note:: If the image was built previously you can reuse it and omit build command
           To verify image existence please run 'docker images pelux'
 
 .. code-block:: bash
@@ -199,7 +200,7 @@ Full build procedure:
 At this point, we recommend using ``docker exec pelux-build <command>`` and to follow the same
 instructions as when building locally (but inside the Docker container).
 
-.. note:: You need 50-100 GB of free space in working directory depending on variant you build
+.. note:: You need 50-100 GB of free space in working directory depending on the variant you build
 
 .. code-block:: bash
 
@@ -242,7 +243,7 @@ Particular layer build procedure:
 
 3. Build and run Docker container
 
-.. note:: If image was build previously you can reuse it and omit build command
+.. note:: If image was built previously you can reuse it and omit build command
           To verify image existence please run 'docker images pelux'
 
 .. code-block:: bash
@@ -262,7 +263,7 @@ instructions as when building locally (but inside the Docker container).
     docker exec pelux-build bash -c "/docker/build-in-docker.sh -v <VARIANT> -i <IMAGE> -b <BRANCH> -l <LAYER_NAME>"
 
 IMAGE and VARIANT options mentioned above
-LAYER_NAME is name of directory we copied in step 2
+LAYER_NAME is the name of the directory we copied in step 2
 BRANCH is optional; default - master
 
 5. Move the built images to the host
